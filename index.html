@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JOSKA™ — Oversized Hoodie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      min-height:100vh;
+      background:#0a0a0a;
+      color:#ffffff;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding:30px 16px;
+      line-height:1.5;
+    }
+    .container { width:100%; max-width:620px; margin:0 auto; }
+    .card {
+      width:100%;
+      padding:50px 36px;
+      border-radius:32px;
+      background:rgba(30,30,40,0.22);
+      backdrop-filter:blur(32px) saturate(180%);
+      -webkit-backdrop-filter:blur(32px) saturate(180%);
+      border:1px solid rgba(255,255,255,0.09);
+      box-shadow:0 40px 100px rgba(0,0,0,0.75), inset 0 0 70px rgba(255,255,255,0.06), inset -60px -60px 120px -40px rgba(180,220,255,0.14);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 40%, transparent 70%);
+      pointer-events:none;
+      border-radius:32px;
+    }
+    header { text-align:center; margin-bottom:50px; }
+    h1 { font-size:clamp(2.4rem,7vw,3.6rem); font-weight:800; letter-spacing:-1.2px; line-height:1.05; margin-bottom:12px; text-shadow:0 6px 20px rgba(0,0,0,0.7); }
+    .subtitle { font-size:1.28rem; color:#cccccc; opacity:0.9; margin-bottom:40px; }
+    .hoodie-gallery { position:relative; width:100%; height:420px; margin-bottom:32px; border-radius:18px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.6); }
+    .hoodie-image { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity 0.4s ease; }
+    .hoodie-image.active { opacity:1; }
+    h2 { font-size:1.7rem; font-weight:700; margin:48px 0 28px; text-align:center; letter-spacing:-0.4px; }
+    .quantity-section { margin:32px 0 24px; text-align:center; }
+    .quantity-controls { display:inline-flex; align-items:center; background:rgba(35,35,45,0.7); border:1px solid rgba(255,255,255,0.12); border-radius:999px; padding:6px 10px; backdrop-filter:blur(10px); box-shadow:0 4px 20px rgba(0,0,0,0.4); }
+    .quantity-btn { width:44px; height:44px; background:transparent; border:none; color:white; font-size:1.6rem; font-weight:500; cursor:pointer; border-radius:50%; transition:all 0.2s ease; display:flex; align-items:center; justify-content:center; }
+    .quantity-btn:hover { background:rgba(255,255,255,0.13); }
+    .quantity-display { min-width:60px; text-align:center; font-size:1.5rem; font-weight:700; padding:0 12px; color:#ffffff; }
+    .color-options { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-bottom:20px; }
+    .color-btn { width:48px; height:48px; border-radius:50%; border:3px solid transparent; box-shadow:0 6px 16px rgba(0,0,0,0.55); cursor:pointer; transition:all 0.25s ease; }
+    .color-btn:hover { transform:scale(1.18); }
+    .color-btn.active { transform:scale(1.18); border:3px solid #ffffff; box-shadow:0 10px 28px rgba(0,0,0,0.6), inset 0 0 0 3px rgba(0,0,0,0.3); }
+    .color-btn[style*="background:#ffffff"] { border:3px solid #555; }
+    .color-btn[style*="background:#ffffff"].active { border:3px solid #ffffff !important; }
+    .size-options { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+    .size-btn { min-width:64px; height:52px; padding:0 18px; border:1.5px solid rgba(255,255,255,0.22); border-radius:999px; background:rgba(40,40,50,0.55); color:white; font-size:1.15rem; font-weight:600; cursor:pointer; transition:all 0.25s ease; display:flex; align-items:center; justify-content:center; }
+    .size-btn:hover { background:rgba(255,255,255,0.18); }
+    .size-btn.active { background:#ffffff; color:#0f0f0f; border-color:#ffffff; box-shadow:0 6px 18px rgba(0,0,0,0.5); }
+    .delivery-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .delivery-block { padding:28px 20px; background:rgba(40,40,50,0.35); border:1px solid rgba(255,255,255,0.12); border-radius:18px; text-align:center; cursor:pointer; transition:all 0.3s; }
+    .delivery-block:hover, .delivery-block.active { border-color:rgba(255,255,255,0.45); background:rgba(50,50,65,0.5); box-shadow:0 10px 30px rgba(0,0,0,0.4); }
+    .delivery-block h3 { font-size:1.3rem; margin-bottom:10px; }
+    .price { font-size:1.55rem; font-weight:700; margin:6px 0; }
+    .delivery-note { font-size:0.92rem; color:#bbbbbb; }
+    .product-info { background:rgba(35,35,45,0.4); border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:32px 28px; font-size:1.05rem; color:#e0e0e0; line-height:1.65; margin:32px 0 48px; }
+    .product-header { display:flex; justify-content:flex-start; align-items:flex-start; margin-bottom:24px; }
+    .product-price { font-size:2.2rem; font-weight:800; color:#ffffff; line-height:1; }
+    .product-price small { font-size:1rem; font-weight:400; color:#bbbbbb; display:block; margin-top:6px; }
+    .product-info ul { list-style:none; margin-top:8px; }
+    .product-info li { margin-bottom:12px; position:relative; padding-left:28px; }
+    .product-info li::before { content:"•"; position:absolute; left:0; color:#aaaaaa; }
+    .total-section { background:rgba(50,50,65,0.5); border:1px solid rgba(255,255,255,0.2); border-radius:18px; padding:28px; margin:50px 0 30px; text-align:center; }
+    .total-section h2 { margin:0 0 20px 0; font-size:1.9rem; }
+    .total-price { font-size:2.8rem; font-weight:800; color:#ffffff; margin-bottom:8px; }
+    .total-breakdown { font-size:1.1rem; color:#bbbbbb; margin-bottom:8px; }
+    .saved-amount { color:#aaffaa; font-size:1.15rem; font-weight:600; margin:8px 0; }
+    .global-discount-msg { color:#aaffaa; font-size:1.15rem; font-weight:500; margin:0 0 24px 0; text-align:center; }
+    .form-group { margin-bottom:24px; position:relative; }
+    label { display:block; margin-bottom:10px; font-weight:500; font-size:1.05rem; color:#dddddd; }
+    input { width:100%; padding:18px 22px; font-size:1.08rem; background:rgba(40,40,50,0.55); border:1px solid rgba(255,255,255,0.14); border-radius:16px; color:white; outline:none; transition:all 0.3s; }
+    input:focus { border-color:rgba(255,255,255,0.4); box-shadow:0 0 0 4px rgba(255,255,255,0.1); }
+    input::placeholder { color:#888; }
+    input:disabled { background:rgba(30,30,40,0.7); color:#777; cursor:not-allowed; }
+    .warning-message { color:#ffaa00; font-size:0.95rem; margin-top:8px; display:none; }
+    .btn {
+      width:100%;
+      padding:20px;
+      font-size:1.18rem;
+      font-weight:700;
+      color:#0f0f0f;
+      background:#ffffff;
+      border:none;
+      border-radius:16px;
+      cursor:pointer;
+      margin-top:32px;
+      transition:all 0.3s ease;
+    }
+    .btn:hover { background:#eeeeee; transform:translateY(-2px); }
+    .error-message { color:#ff5555; font-size:0.98rem; margin-top:8px; text-align:center; display:none; }
+    footer { text-align:center; margin-top:70px; color:#777; font-size:0.92rem; }
+    .selected-items-section { margin:0 0 32px 0; }
+    .selected-items-list { display:flex; flex-direction:column; gap:12px; min-height:80px; background:rgba(40,40,50,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:20px; }
+    .selected-item { display:flex; justify-content:space-between; align-items:center; background:rgba(60,60,75,0.5); padding:14px 18px; border-radius:12px; font-size:1.08rem; }
+    .remove-btn { background:#ff4444; color:white; border:none; border-radius:50%; width:32px; height:32px; font-size:1.2rem; cursor:pointer; line-height:1; }
+    .items-summary { margin-top:16px; text-align:center; color:#aaaaff; font-size:1.05rem; }
+    .add-btn-container { text-align:center; margin:24px 0 40px; }
+    .add-btn { width:auto; padding:16px 48px; font-size:1.15rem; }
+
+    /* ────────────────────────────── Success Overlay ────────────────────────────── */
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      backdrop-filter: blur(8px);
+    }
+    .success-content {
+      background: rgba(30,30,40,0.95);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 48px 32px;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    }
+    .success-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #aaffaa;
+      margin-bottom: 16px;
+    }
+    .success-text {
+      font-size: 1.25rem;
+      color: #dddddd;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .close-success-btn {
+      padding: 16px 48px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0f0f0f;
+      background: #ffffff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .close-success-btn:hover {
+      background: #eeeeee;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width:580px) {
+      .card { padding:40px 24px; }
+      .hoodie-gallery { height:360px; }
+      .delivery-grid { grid-template-columns:1fr; }
+      .total-price { font-size:2.4rem; }
+      .product-price { font-size:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <header>
+        <h1>JOSKA™</h1>
+        <div class="subtitle">Oversized Hoodie — Drop 001</div>
+      </header>
+
+      <div class="hoodie-gallery">
+        <img class="hoodie-image active" data-color="Black" src="https://via.placeholder.com/600x600/000000/ffffff?text=Black+Hoodie" alt="Black Hoodie">
+        <img class="hoodie-image" data-color="White" src="https://via.placeholder.com/600x600/ffffff/000000?text=White+Hoodie" alt="White Hoodie">
+        <img class="hoodie-image" data-color="Charcoal" src="https://via.placeholder.com/600x600/2d3a4b/ffffff?text=Charcoal+Hoodie" alt="Charcoal Hoodie">
+        <img class="hoodie-image" data-color="Burgundy" src="https://via.placeholder.com/600x600/8b1e3f/ffffff?text=Burgundy+Hoodie" alt="Burgundy Hoodie">
+        <img class="hoodie-image" data-color="Forest" src="https://via.placeholder.com/600x600/1a3c34/ffffff?text=Forest+Hoodie" alt="Forest Hoodie">
+        <img class="hoodie-image" data-color="Navy" src="https://via.placeholder.com/600x600/4a607c/ffffff?text=Navy+Hoodie" alt="Navy Hoodie">
+      </div>
+
+      <div class="product-info">
+        <div class="product-header">
+          <div class="product-price">
+            295 MAD
+            <small>Hoodie price (excl. delivery)</small>
+          </div>
+        </div>
+        <ul>
+          <li>Oversized fit for a relaxed, comfortable feel</li>
+          <li>Heavyweight 380–400 GSM 100% cotton</li>
+          <li>Durable double-stitched seams</li>
+          <li>Premium ribbed cuffs and hem</li>
+          <li>Printed with eco-friendly water-based ink</li>
+          <li>Limited quantities available</li>
+        </ul>
+      </div>
+
+      <section>
+        <h2>Choose Color</h2>
+        <div class="color-options">
+          <div class="color-btn active" style="background:#000000;" data-color="Black"></div>
+          <div class="color-btn" style="background:#ffffff;" data-color="White"></div>
+          <div class="color-btn" style="background:#2d3a4b;" data-color="Charcoal"></div>
+          <div class="color-btn" style="background:#8b1e3f;" data-color="Burgundy"></div>
+          <div class="color-btn" style="background:#1a3c34;" data-color="Forest"></div>
+          <div class="color-btn" style="background:#4a607c;" data-color="Navy"></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Choose Size</h2>
+        <div class="size-options">
+          <button class="size-btn" data-size="S">S</button>
+          <button class="size-btn active" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+        </div>
+      </section>
+
+      <section class="quantity-section">
+        <h2>Quantity</h2>
+        <div class="quantity-controls">
+          <button type="button" class="quantity-btn" id="qty-minus">−</button>
+          <span class="quantity-display" id="quantity">1</span>
+          <button type="button" class="quantity-btn" id="qty-plus">+</button>
+        </div>
+      </section>
+
+      <div class="add-btn-container">
+        <button type="button" id="add-to-order-btn" class="btn add-btn">Add to Order</button>
+      </div>
+
+      <section class="selected-items-section">
+        <div id="global-discount-msg" class="global-discount-msg"></div>
+        <h2>Your Selections <span style="font-size:1.1rem; opacity:0.7;">(click × to remove)</span></h2>
+        <div id="selected-items-list" class="selected-items-list"></div>
+        <div class="items-summary" id="items-summary">No items added yet</div>
+      </section>
+
+      <section>
+        <h2>Delivery</h2>
+        <div class="delivery-grid">
+          <div class="delivery-block active" data-delivery="Casablanca" data-price="20">
+            <h3>Casablanca</h3>
+            <div class="price">20 MAD</div>
+            <div class="delivery-note">1–2 days</div>
+          </div>
+          <div class="delivery-block" data-delivery="Other" data-price="40">
+            <h3>Other Cities</h3>
+            <div class="price">40 MAD</div>
+            <div class="delivery-note">2–3 days</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="total-section">
+        <h2>Total</h2>
+        <div class="total-price" id="total-price">0 MAD</div>
+        <div class="total-breakdown" id="total-breakdown">0 MAD</div>
+        <div class="saved-amount" id="saved-amount"></div>
+        <div style="margin-top:12px; font-size:1.05rem; color:#aaaaff;" id="unit-price-info">
+          Add items to see pricing
+        </div>
+      </div>
+
+      <section>
+        <h2>Your Information</h2>
+        <form id="order-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" required placeholder="+212 6XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" name="city" id="city-input" required placeholder="Casablanca / Rabat / Marrakech / ...">
+            <div class="warning-message" id="city-warning">
+              If you're in Casablanca, please select the "Casablanca" delivery option instead.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Full Address</label>
+            <input type="text" name="address" required placeholder="Street, number, apartment, neighborhood...">
+          </div>
+
+          <input type="hidden" name="product" value="Oversized Hoodie">
+          <input type="hidden" name="delivery" id="hidden-delivery">
+          <input type="hidden" name="delivery_price" id="hidden-delivery-price">
+          <input type="hidden" name="total" id="hidden-total">
+
+          <div class="error-message" id="form-error">Please add at least one item to your order.</div>
+
+          <button type="submit" class="btn">Order Now</button>
+        </form>
+      </section>
+
+      <footer>JOSKA™ — All rights reserved</footer>
+    </div>
+  </div>
+
+  <!-- Success popup overlay -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-content">
+      <div class="success-title">Order Sent Successfully!</div>
+      <div class="success-text">We will contact you soon.</div>
+      <button class="close-success-btn" id="close-success">OK</button>
+    </div>
+  </div>
+
+  <script>
+    const BASE_PRICE = 295;
+    const DISCOUNT_RULES = [
+      { minQty: 1, discount: 0 },
+      { minQty: 2, discount: 10 },
+      { minQty: 3, discount: 18 },
+      { minQty: 4, discount: 24 }
+    ];
+
+    let quantity = 1;
+    let selectedItems = [];
+
+    // ─── DOM elements ───
+    const qtyDisplay          = document.getElementById('quantity');
+    const qtyMinus            = document.getElementById('qty-minus');
+    const qtyPlus             = document.getElementById('qty-plus');
+    const totalPriceEl        = document.getElementById('total-price');
+    const totalBreakdown      = document.getElementById('total-breakdown');
+    const savedAmountEl       = document.getElementById('saved-amount');
+    const globalDiscountMsg   = document.getElementById('global-discount-msg');
+    const unitPriceInfo       = document.getElementById('unit-price-info');
+    const addBtn              = document.getElementById('add-to-order-btn');
+    const itemsListEl         = document.getElementById('selected-items-list');
+    const itemsSummaryEl      = document.getElementById('items-summary');
+    const hiddenDelivery      = document.getElementById('hidden-delivery');
+    const hiddenDeliveryPrice = document.getElementById('hidden-delivery-price');
+    const hiddenTotal         = document.getElementById('hidden-total');
+    const successOverlay      = document.getElementById('success-overlay');
+    const closeSuccessBtn     = document.getElementById('close-success');
+
+    // Quantity controls
+    function changeQuantity(delta) {
+      quantity = Math.max(1, quantity + delta);
+      qtyDisplay.textContent = quantity;
+    }
+
+    qtyMinus.addEventListener('click', () => changeQuantity(-1));
+    qtyPlus.addEventListener('click', () => changeQuantity(+1));
+
+    function getDiscountPercent(qty) {
+      for (let i = DISCOUNT_RULES.length - 1; i >= 0; i--) {
+        if (qty >= DISCOUNT_RULES[i].minQty) return DISCOUNT_RULES[i].discount;
+      }
+      return 0;
+    }
+
+    addBtn.addEventListener('click', () => {
+      const colorEl = document.querySelector('.color-btn.active');
+      const sizeEl  = document.querySelector('.size-btn.active');
+      if (!colorEl || !sizeEl) {
+        alert("Please select color and size.");
+        return;
+      }
+
+      selectedItems.push({
+        color: colorEl.dataset.color,
+        size: sizeEl.dataset.size,
+        quantity
+      });
+
+      renderSelectedItems();
+      updateTotalFromSelections();
+    });
+
+    function renderSelectedItems() {
+      itemsListEl.innerHTML = '';
+      if (selectedItems.length === 0) {
+        itemsSummaryEl.textContent = "No items added yet";
+        return;
+      }
+
+      selectedItems.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.className = 'selected-item';
+        div.innerHTML = `
+          <div>${item.quantity} × <strong>${item.color}</strong> / ${item.size}</div>
+          <button class="remove-btn" data-index="${i}">×</button>
+        `;
+        itemsListEl.appendChild(div);
+      });
+
+      itemsSummaryEl.textContent = `${selectedItems.length} item${selectedItems.length !== 1 ? 's' : ''} added`;
+
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.onclick = () => {
+          selectedItems.splice(parseInt(btn.dataset.index), 1);
+          renderSelectedItems();
+          updateTotalFromSelections();
+        };
+      });
+    }
+
+    function updateTotalFromSelections() {
+      const totalQty = selectedItems.reduce((sum, item) => sum + item.quantity, 0);
+      const discountPercent = getDiscountPercent(totalQty);
+      const discountedUnit = BASE_PRICE * (1 - discountPercent / 100);
+      const subtotal = discountedUnit * totalQty;
+      const fullPriceTotal = BASE_PRICE * totalQty;
+
+      const activeDelivery = document.querySelector('.delivery-block.active');
+      const delPrice = activeDelivery ? Number(activeDelivery.dataset.price) : 20;
+      const finalTotal = totalQty === 0 ? 0 : Math.round(subtotal + delPrice);
+      const saved = Math.round(fullPriceTotal - subtotal);
+
+      totalPriceEl.textContent = `${finalTotal} MAD`;
+      totalBreakdown.textContent = totalQty === 0
+        ? "0 MAD"
+        : `Subtotal: ${Math.round(subtotal)} MAD + Delivery: ${delPrice} MAD`;
+
+      savedAmountEl.textContent = saved > 0 ? `You save ${saved} MAD` : '';
+
+      globalDiscountMsg.textContent = discountPercent > 0 && totalQty > 0
+        ? `→ ${discountPercent}% discount applied (${totalQty} hoodies total)`
+        : '';
+
+      unitPriceInfo.textContent = totalQty > 0
+        ? `Unit price after discount: ${Math.round(discountedUnit)} MAD (${totalQty} items)`
+        : "Add items to see pricing";
+
+      hiddenDelivery.value      = activeDelivery?.dataset.delivery || 'Casablanca';
+      hiddenDeliveryPrice.value = delPrice;
+      hiddenTotal.value         = finalTotal;
+    }
+
+    function makeSelectable(selector, onChange = null) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.addEventListener('click', () => {
+          document.querySelectorAll(selector).forEach(e => e.classList.remove('active'));
+          el.classList.add('active');
+          if (onChange) onChange();
+          updateTotalFromSelections();
+        });
+      });
+    }
+
+    makeSelectable('.color-btn', () => {
+      const color = document.querySelector('.color-btn.active')?.dataset.color;
+      document.querySelectorAll('.hoodie-image').forEach(img =>
+        img.classList.toggle('active', img.dataset.color === color)
+      );
+    });
+
+    makeSelectable('.size-btn');
+    makeSelectable('.delivery-block', updateCityField);
+
+    document.querySelector('.color-btn')?.classList.add('active');
+    document.querySelector('.size-btn[data-size="M"]')?.classList.add('active');
+    document.querySelector('.delivery-block[data-delivery="Casablanca"]')?.classList.add('active');
+
+    const cityInput = document.getElementById('city-input');
+    const cityWarning = document.getElementById('city-warning');
+
+    function updateCityField() {
+      const isCasa = document.querySelector('.delivery-block.active')?.dataset.delivery === "Casablanca";
+      if (isCasa) {
+        cityInput.value = "Casablanca";
+        cityInput.disabled = true;
+        cityWarning.style.display = 'none';
+      } else {
+        if (cityInput.value.trim().toLowerCase() === "casablanca") cityInput.value = "";
+        cityInput.disabled = false;
+        checkCityWarning();
+      }
+    }
+
+    function checkCityWarning() {
+      const val = cityInput.value.trim().toLowerCase();
+      cityWarning.style.display = (val === "casablanca" || val.includes("casa")) ? 'block' : 'none';
+    }
+
+    updateCityField();
+    cityInput.addEventListener('input', () => {
+      if (document.querySelector('.delivery-block.active')?.dataset.delivery === "Other") {
+        checkCityWarning();
+      }
+    });
+
+    // ─── Form submission ───
+    const form = document.getElementById('order-form');
+    const errorEl = document.getElementById('form-error');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      if (selectedItems.length === 0) {
+        errorEl.textContent = "Please add at least one item to your order.";
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+
+      // Prepare Formspree summary fields
+      const totalQty = selectedItems.reduce((sum, item) => sum + item.quantity, 0);
+      const discountPercent = getDiscountPercent(totalQty);
+      const discountedUnit = BASE_PRICE * (1 - discountPercent / 100);
+      const subtotal = Math.round(discountedUnit * totalQty);
+      const finalTotalWithDelivery = parseInt(hiddenTotal.value) || 0;
+      const deliveryType = hiddenDelivery.value || 'Casablanca';
+      const deliveryCost = parseInt(hiddenDeliveryPrice.value) || 20;
+      const lineItemsSummary = selectedItems
+        .map(item => `${item.quantity} × ${item.color} / ${item.size}`)
+        .join('\n') || '(no items)';
+
+      const summaryFields = [
+        { name: 'order_total_items',               value: totalQty.toString() },
+        { name: 'order_discount_percent',          value: discountPercent > 0 ? `${discountPercent}%` : '0%' },
+        { name: 'order_unit_price_after_discount', value: Math.round(discountedUnit).toString() },
+        { name: 'order_subtotal',                  value: subtotal.toString() },
+        { name: 'order_delivery_type',             value: deliveryType },
+        { name: 'order_delivery_cost',             value: deliveryCost.toString() },
+        { name: 'order_grand_total',               value: finalTotalWithDelivery.toString() },
+        { name: 'order_saved_amount',              value: Math.round(BASE_PRICE * totalQty - subtotal).toString() },
+        { name: 'order_line_items',                value: lineItemsSummary }
+      ];
+
+      document.querySelectorAll('input[name^="order_"]').forEach(el => el.remove());
+
+      summaryFields.forEach(f => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = f.name;
+        input.value = f.value;
+        form.appendChild(input);
+      });
+
+      const subjectInput = document.createElement('input');
+      subjectInput.type = 'hidden';
+      subjectInput.name = '_subject';
+      subjectInput.value = `New JOSKA Order – ${finalTotalWithDelivery} MAD – ${totalQty} hoodies – ${lineItemsSummary.substring(0, 60)}...`;
+      form.appendChild(subjectInput);
+
+      document.querySelectorAll('input[name^="items["]').forEach(el => el.remove());
+
+      selectedItems.forEach((item, i) => {
+        const p = `items[${i}]`;
+        [
+          {name: `${p}[product]`,  value: "Oversized Hoodie"},
+          {name: `${p}[color]`,    value: item.color},
+          {name: `${p}[size]`,     value: item.size},
+          {name: `${p}[quantity]`, value: item.quantity.toString()}
+        ].forEach(f => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = f.name;
+          input.value = f.value;
+          form.appendChild(input);
+        });
+      });
+
+      try {
+        const res = await fetch("https://formspree.io/f/xqedezww", {
+          method: "POST",
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          // Show success popup
+          successOverlay.style.display = 'flex';
+          // Optional: reset form & selections
+          form.reset();
+          selectedItems = [];
+          renderSelectedItems();
+          updateTotalFromSelections();
+          quantity = 1;
+          qtyDisplay.textContent = 1;
+          document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+          document.querySelector('.delivery-block[data-delivery="Casablanca"]')?.classList.add('active');
+          document.querySelector('.color-btn')?.classList.add('active');
+          document.querySelector('.size-btn[data-size="M"]')?.classList.add('active');
+          updateCityField();
+        } else {
+          errorEl.textContent = "Error sending order. Please try again.";
+          errorEl.style.display = 'block';
+        }
+      } catch (err) {
+        errorEl.textContent = "Network error. Please check your connection.";
+        errorEl.style.display = 'block';
+      }
+    });
+
+    // Close success overlay
+    closeSuccessBtn.addEventListener('click', () => {
+      successOverlay.style.display = 'none';
+    });
+
+    // Optional: close when clicking outside the content box
+    successOverlay.addEventListener('click', (e) => {
+      if (e.target === successOverlay) {
+        successOverlay.style.display = 'none';
+      }
+    });
+
+    updateTotalFromSelections();
+  </script>
+</body>
+</html>
