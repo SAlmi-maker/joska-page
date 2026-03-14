@@ -3,38 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JOSKA™ — Oversized Hoodie</title>
+  <title>JOSKA™ — Oversized Hoodie — Drop 101</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      min-height:100vh;
-      background:#0a0a0a;
-      color:#ffffff;
+      min-height:100vh; background:#0a0a0a; color:#ffffff;
       font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      padding:30px 16px;
-      line-height:1.5;
+      padding:30px 16px; line-height:1.5;
     }
     .container { width:100%; max-width:620px; margin:0 auto; }
     .card {
-      width:100%;
-      padding:50px 36px;
-      border-radius:32px;
-      background:rgba(30,30,40,0.22);
-      backdrop-filter:blur(32px) saturate(180%);
+      width:100%; padding:50px 36px; border-radius:32px;
+      background:rgba(30,30,40,0.22); backdrop-filter:blur(32px) saturate(180%);
       -webkit-backdrop-filter:blur(32px) saturate(180%);
       border:1px solid rgba(255,255,255,0.09);
       box-shadow:0 40px 100px rgba(0,0,0,0.75), inset 0 0 70px rgba(255,255,255,0.06), inset -60px -60px 120px -40px rgba(180,220,255,0.14);
-      position:relative;
-      overflow:hidden;
+      position:relative; overflow:hidden;
     }
     .card::before {
-      content:"";
-      position:absolute;
-      inset:0;
+      content:""; position:absolute; inset:0;
       background:linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 40%, transparent 70%);
-      pointer-events:none;
-      border-radius:32px;
+      pointer-events:none; border-radius:32px;
     }
     header { text-align:center; margin-bottom:50px; }
     h1 { font-size:clamp(2.4rem,7vw,3.6rem); font-weight:800; letter-spacing:-1.2px; line-height:1.05; margin-bottom:12px; text-shadow:0 6px 20px rgba(0,0,0,0.7); }
@@ -65,9 +55,32 @@
     .price { font-size:1.55rem; font-weight:700; margin:6px 0; }
     .delivery-note { font-size:0.92rem; color:#bbbbbb; }
     .product-info { background:rgba(35,35,45,0.4); border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:32px 28px; font-size:1.05rem; color:#e0e0e0; line-height:1.65; margin:32px 0 48px; }
-    .product-header { display:flex; justify-content:flex-start; align-items:flex-start; margin-bottom:24px; }
-    .product-price { font-size:2.2rem; font-weight:800; color:#ffffff; line-height:1; }
-    .product-price small { font-size:1rem; font-weight:400; color:#bbbbbb; display:block; margin-top:6px; }
+    .product-header { margin-bottom:24px; }
+    .product-price {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .original-price {
+      font-size: 1.8rem;
+      color: #aaaaaa;
+      text-decoration: line-through;
+      opacity: 0.85;
+    }
+    .current-price {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .product-price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #bbbbbb;
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+    }
     .product-info ul { list-style:none; margin-top:8px; }
     .product-info li { margin-bottom:12px; position:relative; padding-left:28px; }
     .product-info li::before { content:"•"; position:absolute; left:0; color:#aaaaaa; }
@@ -84,19 +97,7 @@
     input::placeholder { color:#888; }
     input:disabled { background:rgba(30,30,40,0.7); color:#777; cursor:not-allowed; }
     .warning-message { color:#ffaa00; font-size:0.95rem; margin-top:8px; display:none; }
-    .btn {
-      width:100%;
-      padding:20px;
-      font-size:1.18rem;
-      font-weight:700;
-      color:#0f0f0f;
-      background:#ffffff;
-      border:none;
-      border-radius:16px;
-      cursor:pointer;
-      margin-top:32px;
-      transition:all 0.3s ease;
-    }
+    .btn { width:100%; padding:20px; font-size:1.18rem; font-weight:700; color:#0f0f0f; background:#ffffff; border:none; border-radius:16px; cursor:pointer; margin-top:32px; transition:all 0.3s ease; }
     .btn:hover { background:#eeeeee; transform:translateY(-2px); }
     .error-message { color:#ff5555; font-size:0.98rem; margin-top:8px; text-align:center; display:none; }
     footer { text-align:center; margin-top:70px; color:#777; font-size:0.92rem; }
@@ -107,73 +108,23 @@
     .items-summary { margin-top:16px; text-align:center; color:#aaaaff; font-size:1.05rem; }
     .add-btn-container { text-align:center; margin:24px 0 40px; }
     .add-btn { width:auto; padding:16px 48px; font-size:1.15rem; }
-
-    /* ────────────────────────────── Success Overlay ────────────────────────────── */
-    .success-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      backdrop-filter: blur(8px);
-    }
-    .success-content {
-      background: rgba(30,30,40,0.95);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 24px;
-      padding: 48px 32px;
-      max-width: 480px;
-      text-align: center;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-    }
-    .success-title {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #aaffaa;
-      margin-bottom: 16px;
-    }
-    .success-text {
-      font-size: 1.25rem;
-      color: #dddddd;
-      margin-bottom: 32px;
-      line-height: 1.5;
-    }
-    .close-success-btn {
-      padding: 16px 48px;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #0f0f0f;
-      background: #ffffff;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .close-success-btn:hover {
-      background: #eeeeee;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-    }
-
     @media (max-width:580px) {
       .card { padding:40px 24px; }
       .hoodie-gallery { height:360px; }
       .delivery-grid { grid-template-columns:1fr; }
       .total-price { font-size:2.4rem; }
       .product-price { font-size:2rem; }
+      .original-price { font-size:1.5rem; }
+      .current-price { font-size:2.2rem; }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <div class="card">
-
       <header>
         <h1>JOSKA™</h1>
-        <div class="subtitle">Oversized Hoodie — Drop 001</div>
+        <div class="subtitle">Oversized Hoodie — Drop 101</div>
       </header>
 
       <div class="hoodie-gallery">
@@ -188,8 +139,9 @@
       <div class="product-info">
         <div class="product-header">
           <div class="product-price">
-            295 MAD
-            <small>Hoodie price (excl. delivery)</small>
+            <span class="original-price">315 MAD</span>
+            <span class="current-price">295 MAD</span>
+            <small>Limited drop discount applied</small>
           </div>
         </div>
         <ul>
@@ -279,7 +231,7 @@
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" name="phone" required placeholder="+212 6XX XXX XXX">
+            <input type="tel" name="phone" required placeholder="+212 612 345 678">
           </div>
           <div class="form-group">
             <label>City</label>
@@ -293,13 +245,12 @@
             <input type="text" name="address" required placeholder="Street, number, apartment, neighborhood...">
           </div>
 
-          <input type="hidden" name="product" value="Oversized Hoodie">
+          <input type="hidden" name="product" value="Oversized Hoodie — Drop 101">
           <input type="hidden" name="delivery" id="hidden-delivery">
           <input type="hidden" name="delivery_price" id="hidden-delivery-price">
           <input type="hidden" name="total" id="hidden-total">
 
           <div class="error-message" id="form-error">Please add at least one item to your order.</div>
-
           <button type="submit" class="btn">Order Now</button>
         </form>
       </section>
@@ -308,46 +259,34 @@
     </div>
   </div>
 
-  <!-- Success popup overlay -->
-  <div class="success-overlay" id="success-overlay">
-    <div class="success-content">
-      <div class="success-title">Order Sent Successfully!</div>
-      <div class="success-text">We will contact you soon.</div>
-      <button class="close-success-btn" id="close-success">OK</button>
-    </div>
-  </div>
-
   <script>
-    const BASE_PRICE = 295;
-    const DISCOUNT_RULES = [
-      { minQty: 1, discount: 0 },
-      { minQty: 2, discount: 10 },
-      { minQty: 3, discount: 18 },
-      { minQty: 4, discount: 24 }
-    ];
+    const BASE_PRICE = 315; // original displayed price
+
+    function getUnitPriceAfterDiscount(totalQty) {
+      if (totalQty >= 4) return 265;
+      if (totalQty >= 3) return 275;
+      if (totalQty >= 2) return 285;
+      return 295; // 1 item
+    }
 
     let quantity = 1;
     let selectedItems = [];
 
-    // ─── DOM elements ───
-    const qtyDisplay          = document.getElementById('quantity');
-    const qtyMinus            = document.getElementById('qty-minus');
-    const qtyPlus             = document.getElementById('qty-plus');
-    const totalPriceEl        = document.getElementById('total-price');
-    const totalBreakdown      = document.getElementById('total-breakdown');
-    const savedAmountEl       = document.getElementById('saved-amount');
-    const globalDiscountMsg   = document.getElementById('global-discount-msg');
-    const unitPriceInfo       = document.getElementById('unit-price-info');
-    const addBtn              = document.getElementById('add-to-order-btn');
-    const itemsListEl         = document.getElementById('selected-items-list');
-    const itemsSummaryEl      = document.getElementById('items-summary');
-    const hiddenDelivery      = document.getElementById('hidden-delivery');
+    const qtyDisplay = document.getElementById('quantity');
+    const qtyMinus = document.getElementById('qty-minus');
+    const qtyPlus = document.getElementById('qty-plus');
+    const totalPriceEl = document.getElementById('total-price');
+    const totalBreakdown = document.getElementById('total-breakdown');
+    const savedAmountEl = document.getElementById('saved-amount');
+    const globalDiscountMsg = document.getElementById('global-discount-msg');
+    const unitPriceInfo = document.getElementById('unit-price-info');
+    const addBtn = document.getElementById('add-to-order-btn');
+    const itemsListEl = document.getElementById('selected-items-list');
+    const itemsSummaryEl = document.getElementById('items-summary');
+    const hiddenDelivery = document.getElementById('hidden-delivery');
     const hiddenDeliveryPrice = document.getElementById('hidden-delivery-price');
-    const hiddenTotal         = document.getElementById('hidden-total');
-    const successOverlay      = document.getElementById('success-overlay');
-    const closeSuccessBtn     = document.getElementById('close-success');
+    const hiddenTotal = document.getElementById('hidden-total');
 
-    // Quantity controls
     function changeQuantity(delta) {
       quantity = Math.max(1, quantity + delta);
       qtyDisplay.textContent = quantity;
@@ -356,27 +295,18 @@
     qtyMinus.addEventListener('click', () => changeQuantity(-1));
     qtyPlus.addEventListener('click', () => changeQuantity(+1));
 
-    function getDiscountPercent(qty) {
-      for (let i = DISCOUNT_RULES.length - 1; i >= 0; i--) {
-        if (qty >= DISCOUNT_RULES[i].minQty) return DISCOUNT_RULES[i].discount;
-      }
-      return 0;
-    }
-
     addBtn.addEventListener('click', () => {
       const colorEl = document.querySelector('.color-btn.active');
-      const sizeEl  = document.querySelector('.size-btn.active');
+      const sizeEl = document.querySelector('.size-btn.active');
       if (!colorEl || !sizeEl) {
         alert("Please select color and size.");
         return;
       }
-
       selectedItems.push({
         color: colorEl.dataset.color,
         size: sizeEl.dataset.size,
         quantity
       });
-
       renderSelectedItems();
       updateTotalFromSelections();
     });
@@ -387,7 +317,6 @@
         itemsSummaryEl.textContent = "No items added yet";
         return;
       }
-
       selectedItems.forEach((item, i) => {
         const div = document.createElement('div');
         div.className = 'selected-item';
@@ -397,9 +326,7 @@
         `;
         itemsListEl.appendChild(div);
       });
-
       itemsSummaryEl.textContent = `${selectedItems.length} item${selectedItems.length !== 1 ? 's' : ''} added`;
-
       document.querySelectorAll('.remove-btn').forEach(btn => {
         btn.onclick = () => {
           selectedItems.splice(parseInt(btn.dataset.index), 1);
@@ -411,34 +338,30 @@
 
     function updateTotalFromSelections() {
       const totalQty = selectedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const discountPercent = getDiscountPercent(totalQty);
-      const discountedUnit = BASE_PRICE * (1 - discountPercent / 100);
+      const discountedUnit = getUnitPriceAfterDiscount(totalQty);
       const subtotal = discountedUnit * totalQty;
       const fullPriceTotal = BASE_PRICE * totalQty;
-
       const activeDelivery = document.querySelector('.delivery-block.active');
       const delPrice = activeDelivery ? Number(activeDelivery.dataset.price) : 20;
       const finalTotal = totalQty === 0 ? 0 : Math.round(subtotal + delPrice);
       const saved = Math.round(fullPriceTotal - subtotal);
+      const discountPercent = Math.round((1 - discountedUnit / BASE_PRICE) * 100);
 
       totalPriceEl.textContent = `${finalTotal} MAD`;
       totalBreakdown.textContent = totalQty === 0
         ? "0 MAD"
         : `Subtotal: ${Math.round(subtotal)} MAD + Delivery: ${delPrice} MAD`;
-
       savedAmountEl.textContent = saved > 0 ? `You save ${saved} MAD` : '';
-
       globalDiscountMsg.textContent = discountPercent > 0 && totalQty > 0
         ? `→ ${discountPercent}% discount applied (${totalQty} hoodies total)`
         : '';
-
       unitPriceInfo.textContent = totalQty > 0
-        ? `Unit price after discount: ${Math.round(discountedUnit)} MAD (${totalQty} items)`
+        ? `Unit price after discount: ${discountedUnit} MAD (${totalQty} items)`
         : "Add items to see pricing";
 
-      hiddenDelivery.value      = activeDelivery?.dataset.delivery || 'Casablanca';
+      hiddenDelivery.value = activeDelivery?.dataset.delivery || 'Casablanca';
       hiddenDeliveryPrice.value = delPrice;
-      hiddenTotal.value         = finalTotal;
+      hiddenTotal.value = finalTotal;
     }
 
     function makeSelectable(selector, onChange = null) {
@@ -488,53 +411,48 @@
     }
 
     updateCityField();
+
     cityInput.addEventListener('input', () => {
       if (document.querySelector('.delivery-block.active')?.dataset.delivery === "Other") {
         checkCityWarning();
       }
     });
 
-    // ─── Form submission ───
     const form = document.getElementById('order-form');
     const errorEl = document.getElementById('form-error');
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-
       if (selectedItems.length === 0) {
         errorEl.textContent = "Please add at least one item to your order.";
         errorEl.style.display = 'block';
         return;
       }
-
       errorEl.style.display = 'none';
 
-      // Prepare Formspree summary fields
       const totalQty = selectedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const discountPercent = getDiscountPercent(totalQty);
-      const discountedUnit = BASE_PRICE * (1 - discountPercent / 100);
-      const subtotal = Math.round(discountedUnit * totalQty);
+      const discountedUnit = getUnitPriceAfterDiscount(totalQty);
+      const subtotal = discountedUnit * totalQty;
       const finalTotalWithDelivery = parseInt(hiddenTotal.value) || 0;
       const deliveryType = hiddenDelivery.value || 'Casablanca';
       const deliveryCost = parseInt(hiddenDeliveryPrice.value) || 20;
+
       const lineItemsSummary = selectedItems
         .map(item => `${item.quantity} × ${item.color} / ${item.size}`)
         .join('\n') || '(no items)';
 
       const summaryFields = [
-        { name: 'order_total_items',               value: totalQty.toString() },
-        { name: 'order_discount_percent',          value: discountPercent > 0 ? `${discountPercent}%` : '0%' },
-        { name: 'order_unit_price_after_discount', value: Math.round(discountedUnit).toString() },
-        { name: 'order_subtotal',                  value: subtotal.toString() },
-        { name: 'order_delivery_type',             value: deliveryType },
-        { name: 'order_delivery_cost',             value: deliveryCost.toString() },
-        { name: 'order_grand_total',               value: finalTotalWithDelivery.toString() },
-        { name: 'order_saved_amount',              value: Math.round(BASE_PRICE * totalQty - subtotal).toString() },
-        { name: 'order_line_items',                value: lineItemsSummary }
+        { name: 'order_total_items', value: totalQty.toString() },
+        { name: 'order_unit_price_after_discount', value: discountedUnit.toString() },
+        { name: 'order_subtotal', value: Math.round(subtotal).toString() },
+        { name: 'order_delivery_type', value: deliveryType },
+        { name: 'order_delivery_cost', value: deliveryCost.toString() },
+        { name: 'order_grand_total', value: finalTotalWithDelivery.toString() },
+        { name: 'order_saved_amount', value: Math.round(BASE_PRICE * totalQty - subtotal).toString() },
+        { name: 'order_line_items', value: lineItemsSummary }
       ];
 
       document.querySelectorAll('input[name^="order_"]').forEach(el => el.remove());
-
       summaryFields.forEach(f => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -550,13 +468,12 @@
       form.appendChild(subjectInput);
 
       document.querySelectorAll('input[name^="items["]').forEach(el => el.remove());
-
       selectedItems.forEach((item, i) => {
         const p = `items[${i}]`;
         [
-          {name: `${p}[product]`,  value: "Oversized Hoodie"},
-          {name: `${p}[color]`,    value: item.color},
-          {name: `${p}[size]`,     value: item.size},
+          {name: `${p}[product]`, value: "Oversized Hoodie — Drop 101"},
+          {name: `${p}[color]`, value: item.color},
+          {name: `${p}[size]`, value: item.size},
           {name: `${p}[quantity]`, value: item.quantity.toString()}
         ].forEach(f => {
           const input = document.createElement('input');
@@ -575,9 +492,7 @@
         });
 
         if (res.ok) {
-          // Show success popup
-          successOverlay.style.display = 'flex';
-          // Optional: reset form & selections
+          alert("Order sent successfully! We will contact you soon.");
           form.reset();
           selectedItems = [];
           renderSelectedItems();
@@ -596,18 +511,6 @@
       } catch (err) {
         errorEl.textContent = "Network error. Please check your connection.";
         errorEl.style.display = 'block';
-      }
-    });
-
-    // Close success overlay
-    closeSuccessBtn.addEventListener('click', () => {
-      successOverlay.style.display = 'none';
-    });
-
-    // Optional: close when clicking outside the content box
-    successOverlay.addEventListener('click', (e) => {
-      if (e.target === successOverlay) {
-        successOverlay.style.display = 'none';
       }
     });
 
