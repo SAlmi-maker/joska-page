@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RENVA — Privacy Policy & Terms of Service</title>
+  <meta name="description" content="RENVA Privacy Policy and Terms of Service for car rental invoice management platform. Data protection, refund policy, and acceptable use." />
+  <meta name="keywords" content="RENVA privacy policy, terms of service rental software, data protection Morocco" />
+  <link rel="icon" type="image/png" href="renvafavicon.png" sizes="32x32" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 32px 20px 64px;
+      display: flex; flex-direction: column;
+      align-items: center; overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      width: 100%; max-width: 860px;
+      display: flex; align-items: center;
+      gap: 40px; margin-bottom: 28px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--text-primary); text-decoration: none;
+    }
+    .logo-icon {
+      width: 32px; height: 32px; background: var(--primary);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-weight: 800; font-size: 14px;
+    }
+    .legal-logo-img { width: 24px; height: 24px; object-fit: contain; }
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+    
+    /* ── MAIN CARD ── */
+    .legal-card {
+      width: 100%; max-width: 860px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 48px 0;
+    }
+
+    /* ── HERO ── */
+    .legal-hero {
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 24px 32px; margin-bottom: 40px;
+    }
+    .legal-hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary-light); color: var(--primary);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .legal-hero h1 { font-size: 1.9rem; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+    .legal-hero p { font-size: 0.9rem; color: var(--text-secondary); max-width: 560px; line-height: 1.6; }
+    .legal-meta {
+      display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .legal-meta-item {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .legal-meta-item .label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .legal-meta-item .value {
+      font-size: 0.82rem; font-weight: 600; color: var(--text-primary);
+    }
+
+    /* ── QUICK SUMMARY CARDS ── */
+    .summary-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 40px; padding: 0 24px;
+    }
+    .summary-card {
+      border-radius: 10px; padding: 16px; border: 1px solid;
+    }
+    .summary-card.green { background: var(--green-light); border-color: #A7F3D0; }
+    .summary-card.amber { background: var(--amber-light); border-color: #FDE68A; }
+    .summary-card.red { background: var(--red-light); border-color: #FECACA; }
+    .summary-card .sc-icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .summary-card .sc-title { font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
+    .summary-card.green .sc-title { color: var(--green); }
+    .summary-card.amber .sc-title { color: var(--amber); }
+    .summary-card.red .sc-title { color: var(--red); }
+    .summary-card .sc-text { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* ── SECTION ── */
+    .doc-section { margin-bottom: 48px; scroll-margin-top: 24px; padding: 0 24px; }
+    .doc-section:last-child { margin-bottom: 0; }
+
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 2px solid var(--primary); padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .section-badge {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--primary);
+      background: var(--primary-light); padding: 3px 8px; border-radius: 4px;
+    }
+    .section-title { font-size: 1.2rem; font-weight: 700; }
+
+    h3 {
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--text-primary); margin: 24px 0 8px;
+    }
+    h3:first-child { margin-top: 0; }
+
+    p {
+      font-size: 0.875rem; line-height: 1.75;
+      color: var(--text-secondary); margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { padding-left: 0; list-style: none; margin-bottom: 12px; }
+    li {
+      font-size: 0.875rem; line-height: 1.7;
+      color: var(--text-secondary); padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    li::before {
+      content: ''; position: absolute; left: 6px; top: 12px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--primary); opacity: .5;
+    }
+    ol { counter-reset: ol-counter; }
+    ol li::before {
+      content: counter(ol-counter);
+      counter-increment: ol-counter;
+      background: none; border-radius: 0;
+      width: auto; height: auto; top: 6px; left: 0;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--primary);
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: var(--primary-light); border-inline-start: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0;
+    }
+    body.rtl .info-box { border-radius: 8px 0 0 8px; }
+    .info-box p { font-size: 0.83rem; color: var(--text-primary); margin: 0; }
+    .info-box strong { color: var(--primary); }
+
+    .warn-box {
+      background: var(--amber-light); border-inline-start: 3px solid var(--amber);
+      border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0;
+    }
+    body.rtl .warn-box { border-radius: 8px 0 0 8px; }
+    .warn-box p { font-size: 0.83rem; color: var(--text-primary); margin: 0; }
+
+    /* ── DATA TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .data-table th {
+      text-align: start; padding: 9px 12px;
+      background: var(--bg-muted); color: var(--text-muted);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; border-bottom: 1px solid var(--border-color);
+    }
+    .data-table td {
+      padding: 10px 12px; border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary); vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--bg-muted); }
+    .tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 600;
+      padding: 2px 7px; border-radius: 4px; white-space: nowrap;
+    }
+    .tag-blue { background: var(--primary-light); color: var(--primary); }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-amber { background: var(--amber-light); color: var(--amber); }
+
+    /* ── DIVIDER ── */
+    .doc-divider {
+      border: none; border-top: 2px dashed var(--border-color);
+      margin: 56px 0;
+    }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-block {
+      background: var(--bg-muted); border: 1px solid var(--border-color);
+      border-radius: 10px; padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .contact-icon { font-size: 1.6rem; }
+    .contact-block h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .contact-block p { font-size: 0.83rem; margin: 0; }
+
+    /* ── FOOTER ── */
+    .legal-footer {
+      margin-top: 48px; padding: 24px 24px 0;
+      border-top: 1px solid var(--border-color);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .legal-footer p { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
+    .footer-badges { display: flex; gap: 8px; }
+    .footer-badge {
+      font-size: 0.68rem; font-weight: 600; padding: 3px 8px;
+      border-radius: 4px; background: var(--bg-muted);
+      border: 1px solid var(--border-color); color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      body { padding: 16px 12px 48px; }
+      .legal-card { padding: 28px 0; border-radius: 12px; }
+      .topbar { gap: 16px; }
+      .legal-hero { padding: 0 16px 28px; }
+      .legal-hero h1 { font-size: 1.4rem; }
+      .summary-grid { padding: 0 16px; grid-template-columns: 1fr; }
+      .doc-section { padding: 0 16px; }
+      .contact-block { flex-direction: column; gap: 8px; padding: 16px; }
+      .legal-footer { flex-direction: column; text-align: center; padding: 20px 16px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="logo" href="#">
+    <div class="logo-icon"><img src="renvalogo.png" alt="RENVA" class="legal-logo-img" /></div>
+    RENVA
+  </a>
+  <div class="topbar-right">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ar">ع</button>
+    </div>
+    <!-- theme toggle removed -->
+  </div>
+</div>
+
+<main class="legal-card">
+
+    <!-- HERO -->
+    <div class="legal-hero">
+      <div class="legal-hero-badge" data-i18n="legal.badge">Legal Documents</div>
+      <h1 data-i18n="legal.subtitle">Privacy Policy &amp; Terms of Service</h1>
+      <p data-i18n="legal.hero.text">RENVA is committed to transparency. These documents explain exactly how we handle your data and what governs your use of our platform. We've written them in plain language so you actually understand them.</p>
+      <div class="legal-meta">
+        <div class="legal-meta-item">
+          <span class="label" data-i18n="legal.lastUpdated">Last Updated</span>
+          <span class="value" data-i18n="legal.hero.lastUpdated">June 2026</span>
+        </div>
+        <div class="legal-meta-item">
+          <span class="label" data-i18n="legal.effectiveDate">Effective Date</span>
+          <span class="value" data-i18n="legal.hero.effectiveDate">June 1, 2026</span>
+        </div>
+        <div class="legal-meta-item">
+          <span class="label" data-i18n="legal.jurisdiction">Jurisdiction</span>
+          <span class="value" data-i18n="legal.hero.jurisdiction">Kingdom of Morocco</span>
+        </div>
+        <div class="legal-meta-item">
+          <span class="label" data-i18n="legal.appliesTo">Applies To</span>
+          <span class="value" data-i18n="legal.hero.appliesTo">All RENVA subscribers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK SUMMARY -->
+    <div class="summary-grid">
+      <div class="summary-card green">
+
+        <div class="sc-title" data-i18n="legal.summary1Title">We protect your data</div>
+        <div class="sc-text" data-i18n="legal.summary1Text">Your data is stored securely on Google Cloud (Firebase). We never sell it to anyone.</div>
+      </div>
+      <div class="summary-card amber">
+
+        <div class="sc-title" data-i18n="legal.summary2Title">Paid subscription</div>
+        <div class="sc-text" data-i18n="legal.summary2Text">RENVA is a paid platform. Subscriptions are activated manually via bank transfer after contacting us.</div>
+      </div>
+      <div class="summary-card red">
+
+        <div class="sc-title" data-i18n="legal.summary3Title">Moroccan law applies</div>
+        <div class="sc-text" data-i18n="legal.summary3Text">Your privacy rights are governed by Law 09-08. You can request, correct, or delete your data.</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  PRIVACY POLICY                                -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="privacy" class="doc-section">
+      <div class="section-header">
+        <span class="section-badge" data-i18n="legal.privacy.title">Privacy Policy</span>
+        <span class="section-title" data-i18n="legal.privacy.sectionTitle">How RENVA handles your information</span>
+      </div>
+
+      <p data-i18n="legal.privacy.introParagraph">RENVA ("we", "our", "us") is a car rental invoice management platform operated from Morocco. This Privacy Policy explains what personal data we collect, why we collect it, how we use and protect it, and the rights you have under Moroccan Law 09-08 on the Protection of Personal Data. By creating a RENVA account, you acknowledge that you have read and understood this policy.</p>
+
+      <!-- 1. What we collect -->
+      <div id="what-we-collect">
+        <h3 data-i18n="legal.privacy.dataTitle">1. Information We Collect</h3>
+        <p data-i18n="legal.privacy.dataTableIntro">We collect the minimum data necessary to provide our service. Here's a detailed breakdown:</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-i18n="legal.privacy.dataTable.category">Category</th>
+              <th data-i18n="legal.privacy.dataTable.dataPoints">Data Points</th>
+              <th data-i18n="legal.privacy.dataTable.purpose">Purpose</th>
+              <th data-i18n="legal.privacy.dataTable.source">Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryAccount">Account</strong></td>
+              <td data-i18n="legal.privacy.dataTable.emailHashedPwd">Email address, hashed password</td>
+              <td data-i18n="legal.privacy.dataTable.authAccess">Authentication &amp; access control</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.youProvide">You provide it</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryCompany">Company Profile</strong></td>
+              <td data-i18n="legal.privacy.dataTable.companyInfo">Company name, logo, address, phone, email, website</td>
+              <td data-i18n="legal.privacy.dataTable.displayInvoices">Display on invoices &amp; reports</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.youProvide">You provide it</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryClient">Client Records</strong></td>
+              <td data-i18n="legal.privacy.dataTable.clientInfoFields">Client name, CIN/passport number, phone number</td>
+              <td data-i18n="legal.privacy.dataTable.invoiceGen">Invoice generation, client management</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.youEnter">You enter it</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryVehicle">Vehicle Data</strong></td>
+              <td data-i18n="legal.privacy.dataTable.vehicleFields">Brand, model, plate number, daily rate</td>
+              <td data-i18n="legal.privacy.dataTable.invoiceReportGen">Invoice and report generation</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.youEnter">You enter it</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryInvoice">Invoice Data</strong></td>
+              <td data-i18n="legal.privacy.dataTable.invoiceFields">Rental dates, amounts, discounts, notes, signatures</td>
+              <td data-i18n="legal.privacy.dataTable.invoiceCreation">Invoice creation, revenue reports</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.youEnter">You enter it</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categoryUsage">Usage Data</strong></td>
+              <td data-i18n="legal.privacy.dataTable.usageFields">Login timestamps, session info (via Firebase)</td>
+              <td data-i18n="legal.privacy.dataTable.securityMonitoring">Security monitoring, platform stability</td>
+              <td><span class="tag tag-green" data-i18n="legal.privacy.dataTable.autoCollected">Auto-collected</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.dataTable.categorySubscription">Subscription Data</strong></td>
+              <td data-i18n="legal.privacy.dataTable.subscriptionFields">Plan type, activation status, expiry date</td>
+              <td data-i18n="legal.privacy.dataTable.accessManagement">Access management</td>
+              <td><span class="tag tag-blue" data-i18n="legal.privacy.dataTable.managedByUs">Managed by us</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="info-box">
+          <p><strong data-i18n="legal.privacy.importantLabel">Important:</strong> <span data-i18n="legal.privacy.securityImportantText">We never see your password. Firebase Authentication stores a cryptographic hash only — not even our team can read it. Your invoice data and client records are only accessible through your authenticated account.</span></p>
+        </div>
+      </div>
+
+      <!-- 2. How we use -->
+      <div id="how-we-use">
+        <h3 data-i18n="legal.privacy.useTitle">2. How We Use Your Information</h3>
+        <p data-i18n="legal.privacy.useIntro">We use your data exclusively to operate and improve RENVA. Specifically:</p>
+        <ul>
+          <li data-i18n="legal.privacy.useList.createStoreExport">To create, store, and export your rental invoices as PDFs</li>
+          <li data-i18n="legal.privacy.useList.generateReports">To generate daily, monthly, and annual revenue reports</li>
+          <li data-i18n="legal.privacy.useList.displayBranding">To display your company branding (logo, name, contact) on invoices</li>
+          <li data-i18n="legal.privacy.useList.manageSavedClients">To manage your saved clients and vehicle records</li>
+          <li data-i18n="legal.privacy.useList.authenticateSession">To authenticate you securely and maintain your session</li>
+          <li data-i18n="legal.privacy.useList.manageSubscription">To manage your subscription status and enforce plan limits</li>
+          <li data-i18n="legal.privacy.useList.detectFraud">To detect and prevent fraud, abuse, or unauthorized access</li>
+          <li data-i18n="legal.privacy.useList.supportRequests">To respond to your support requests</li>
+          <li data-i18n="legal.privacy.useList.serviceUpdates">To send you important service updates (not marketing, unless you opt in)</li>
+        </ul>
+        <p><span data-i18n="legal.privacy.useNoAdsPart1">We do </span><strong data-i18n="legal.privacy.useNoAdsBold">not</strong><span data-i18n="legal.privacy.useNoAdsPart2"> use your data to serve advertisements, build marketing profiles, train AI models, or share with analytics brokers.</span></p>
+      </div>
+
+      <!-- 3. Data sharing -->
+      <div id="data-sharing">
+        <h3 data-i18n="legal.privacy.shareTitle">3. Data Sharing &amp; Third Parties</h3>
+        <p data-i18n="legal.privacy.shareIntro">We share your data with a limited number of service providers who help us operate RENVA. We do not sell your data. Ever.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-i18n="legal.privacy.shareTable.provider">Provider</th>
+              <th data-i18n="legal.privacy.shareTable.role">Role</th>
+              <th data-i18n="legal.privacy.shareTable.dataShared">Data Shared</th>
+              <th data-i18n="legal.privacy.shareTable.privacyPolicy">Privacy Policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="legal.privacy.shareTable.firebaseLabel">Supabase</strong></td>
+              <td data-i18n="legal.privacy.shareTable.firebaseRole">Authentication, database, hosting</td>
+              <td data-i18n="legal.privacy.shareTable.firebaseData">All platform data (stored in your account)</td>
+              <td><a data-i18n="legal.privacy.shareTable.firebasePolicyLink" href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="legal.privacy.shareTable.gcpLabel">Google Cloud Platform</strong></td>
+              <td data-i18n="legal.privacy.shareTable.gcpRole">Infrastructure &amp; storage</td>
+              <td data-i18n="legal.privacy.shareTable.gcpData">Encrypted data at rest</td>
+              <td><a data-i18n="legal.privacy.shareTable.gcpPolicyLink" href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p data-i18n="legal.privacy.shareLegalDisclosure">We may disclose your data if required to do so by Moroccan law, a court order, or to protect the rights, property, or safety of RENVA, our users, or the public. We will notify you of such requests where legally permitted.</p>
+
+        <p data-i18n="legal.privacy.shareAcquisition">If RENVA is ever acquired or merged, your data may be transferred to the acquiring entity, but this policy will continue to apply. We will notify you of any such change by email at least 30 days in advance.</p>
+      </div>
+
+      <!-- 4. Security -->
+      <div id="data-security">
+        <h3 data-i18n="legal.privacy.securityTitle">4. Data Security</h3>
+        <p data-i18n="legal.privacy.securityIntro">We take security seriously and implement the following measures to protect your data:</p>
+        <ul>
+          <li><strong data-i18n="legal.privacy.securityList.encryptTransitLabel">Encryption in transit:</strong> <span data-i18n="legal.privacy.securityList.encryptTransitText">All data between your browser and RENVA is encrypted via HTTPS/TLS</span></li>
+          <li><strong data-i18n="legal.privacy.securityList.encryptRestLabel">Encryption at rest:</strong> <span data-i18n="legal.privacy.securityList.encryptRestText">Firebase stores your data with server-side encryption on Google Cloud</span></li>
+          <li><strong data-i18n="legal.privacy.securityList.authLabel">Authentication:</strong> <span data-i18n="legal.privacy.securityList.authText">Passwords are never stored in plain text — Firebase uses industry-standard hashing</span></li>
+          <li><strong data-i18n="legal.privacy.securityList.accessLabel">Access control:</strong> <span data-i18n="legal.privacy.securityList.accessText">Firebase Security Rules ensure each user can only access their own data</span></li>
+          <li><strong data-i18n="legal.privacy.securityList.noAccessLabel">No employee access:</strong> <span data-i18n="legal.privacy.securityList.noAccessText">Our team cannot read your invoices, client data, or financial records without your explicit consent</span></li>
+        </ul>
+        <div class="warn-box">
+          <p><span data-i18n="legal.privacy.warnBoxText">While we implement strong safeguards, no system is 100% secure. You are responsible for keeping your account credentials confidential. If you suspect unauthorized access, contact us immediately at </span><strong data-i18n="legal.privacy.warnBoxEmail">contact@renva.space</strong><span data-i18n="legal.privacy.warnBoxPeriod">.</span></p>
+        </div>
+      </div>
+
+      <!-- 5. Retention -->
+      <div id="data-retention">
+        <h3 data-i18n="legal.privacy.retainTitle">5. Data Retention</h3>
+        <p data-i18n="legal.privacy.retainIntro">We retain your data for as long as your account is active or as needed to provide you the service. Here's how retention works:</p>
+        <ul>
+          <li><strong data-i18n="legal.privacy.retainList.activeLabel">Active account:</strong> <span data-i18n="legal.privacy.retainList.activeText">All your data is retained and accessible as long as you are a subscriber</span></li>
+          <li><strong data-i18n="legal.privacy.retainList.cancelLabel">Subscription cancellation:</strong> <span data-i18n="legal.privacy.retainList.cancelText">Your data is retained for 90 days after cancellation so you can export it, then permanently deleted</span></li>
+          <li><strong data-i18n="legal.privacy.retainList.deleteLabel">Account deletion:</strong> <span data-i18n="legal.privacy.retainList.deleteText">When you delete your account from Settings, all associated data — invoices, clients, vehicles, company profile — is permanently deleted within 30 days</span></li>
+          <li><strong data-i18n="legal.privacy.retainList.partialLabel">Partial deletion:</strong> <span data-i18n="legal.privacy.retainList.partialText">You can delete individual invoices, clients, or vehicles at any time from within the app</span></li>
+          <li><strong data-i18n="legal.privacy.retainList.backupLabel">Backup copies:</strong> <span data-i18n="legal.privacy.retainList.backupText">Firebase automated backups may retain deleted data for up to 7 additional days for disaster recovery purposes</span></li>
+        </ul>
+      </div>
+
+      <!-- 6. Cookies -->
+      <div id="cookies">
+        <h3 data-i18n="legal.privacy.cookiesTitle">6. Cookies &amp; Local Storage</h3>
+        <p data-i18n="legal.privacy.cookiesIntro">RENVA uses a minimal set of browser storage to keep the app functional:</p>
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th data-i18n="legal.privacy.cookiesTable.name">Name</th><th data-i18n="legal.privacy.cookiesTable.type">Type</th><th data-i18n="legal.privacy.cookiesTable.purpose">Purpose</th><th data-i18n="legal.privacy.cookiesTable.duration">Duration</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="legal.privacy.cookiesTable.authToken">Firebase Auth Token</td>
+              <td data-i18n="legal.privacy.cookiesTable.authTokenType">IndexedDB / Cookie</td>
+              <td data-i18n="legal.privacy.cookiesTable.authTokenPurpose">Keeps you logged in securely</td>
+              <td data-i18n="legal.privacy.cookiesTable.authTokenDuration">Session / 30 days</td>
+            </tr>
+            <tr>
+              <td data-i18n="legal.privacy.cookiesTable.themeName">RENVA-theme</td>
+              <td data-i18n="legal.privacy.cookiesTable.themeType">localStorage</td>
+              <td data-i18n="legal.privacy.cookiesTable.themePurpose">Remembers your dark/light mode preference</td>
+              <td data-i18n="legal.privacy.cookiesTable.themeDuration">Persistent</td>
+            </tr>
+            <tr>
+              <td data-i18n="legal.privacy.cookiesTable.langName">RENVA-lang</td>
+              <td data-i18n="legal.privacy.cookiesTable.langType">localStorage</td>
+              <td data-i18n="legal.privacy.cookiesTable.langPurpose">Remembers your language preference (EN/FR/AR)</td>
+              <td data-i18n="legal.privacy.cookiesTable.langDuration">Persistent</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p data-i18n="legal.privacy.cookiesNoTracking">We do not use advertising cookies, cross-site tracking cookies, or third-party analytics cookies. We do not use Google Analytics or any similar tracking tools.</p>
+      </div>
+
+      <!-- 7. Your rights -->
+      <div id="your-rights">
+        <h3 data-i18n="legal.privacy.rightsTitle">7. Your Rights — Moroccan Law 09-08</h3>
+        <p><span data-i18n="legal.privacy.rightsIntroPart1">Under Law 09-08 on the Protection of Personal Data in Morocco, supervised by the </span><strong data-i18n="legal.privacy.rightsIntroCndp">Commission Nationale de contrôle de la Protection des Données à caractère Personnel (CNDP)</strong><span data-i18n="legal.privacy.rightsIntroPart2">, you have the following rights:</span></p>
+        <ul>
+          <li><strong data-i18n="legal.privacy.rightsList.accessLabel">Right of access:</strong> <span data-i18n="legal.privacy.rightsList.accessText">Request a copy of all personal data we hold about you</span></li>
+          <li><strong data-i18n="legal.privacy.rightsList.rectifyLabel">Right of rectification:</strong> <span data-i18n="legal.privacy.rightsList.rectifyText">Correct any inaccurate or incomplete data</span></li>
+          <li><strong data-i18n="legal.privacy.rightsList.erasureLabel">Right of erasure:</strong> <span data-i18n="legal.privacy.rightsList.erasureText">Request deletion of your data (subject to legal retention obligations)</span></li>
+          <li><strong data-i18n="legal.privacy.rightsList.objectLabel">Right to object:</strong> <span data-i18n="legal.privacy.rightsList.objectText">Object to the processing of your data in certain circumstances</span></li>
+          <li><strong data-i18n="legal.privacy.rightsList.portabilityLabel">Right to data portability:</strong> <span data-i18n="legal.privacy.rightsList.portabilityText">Export your invoices and reports as PDFs directly from the app — we cannot provide data file exports on request</span></li>
+          <li><strong data-i18n="legal.privacy.rightsList.complaintLabel">Right to lodge a complaint:</strong> <span data-i18n="legal.privacy.rightsList.complaintTextPart1">File a complaint with the CNDP at </span><a data-i18n="legal.privacy.rightsList.complaintLink" href="https://www.cndp.ma" target="_blank">cndp.ma</a><span data-i18n="legal.privacy.rightsList.complaintTextPart2"> if you believe your rights have been violated</span></li>
+        </ul>
+        <p><span data-i18n="legal.privacy.rightsContactPart1">To exercise any of these rights, contact us at </span><strong data-i18n="legal.privacy.rightsContactEmail">contact@renva.space</strong><span data-i18n="legal.privacy.rightsContactPart2">. We will respond within 30 days.</span></p>
+      </div>
+
+      <!-- 8. Children -->
+      <div id="children">
+        <h3 data-i18n="legal.privacy.childrenTitle">8. Children's Privacy</h3>
+        <p><span data-i18n="legal.privacy.childrenIntroPart1">RENVA is a professional business platform intended exclusively for business use. Account creation is managed by RENVA administrators — there is no public self-registration. We do not knowingly collect personal data from minors. If you believe a minor's data has been submitted to RENVA, please contact us at </span><strong data-i18n="legal.privacy.childrenEmail">contact@renva.space</strong><span data-i18n="legal.privacy.childrenIntroPart2"> and we will delete it promptly.</span></p>
+      </div>
+
+      <!-- 9. Changes -->
+      <h3 data-i18n="legal.privacy.changesTitle">9. Changes to This Policy</h3>
+      <p data-i18n="legal.privacy.changesText">We may update this Privacy Policy periodically to reflect changes in our practices or the law. When we make significant changes, we will notify you by email at least 15 days before they take effect. The "Last Updated" date at the top of this page always reflects the most recent version. Continued use of RENVA after changes become effective constitutes your acceptance.</p>
+
+      <!-- 10. Contact -->
+      <div id="privacy-contact">
+        <h3 data-i18n="legal.privacy.contactTitle">10. Contact — Privacy</h3>
+        <div class="contact-block">
+
+          <div>
+            <h4 data-i18n="legal.privacy.contactH4">Privacy inquiries</h4>
+            <p><span data-i18n="legal.privacy.contactTextPart1">For any privacy-related questions, data requests, or concerns, email us at </span><a data-i18n="legal.privacy.contactEmailText" href="mailto:contact@renva.space">contact@renva.space</a><span data-i18n="legal.privacy.contactTextPart2">. We respond within 30 days. You may also contact the CNDP directly at </span><a data-i18n="legal.privacy.contactCndpText" href="https://www.cndp.ma" target="_blank">cndp.ma</a><span data-i18n="legal.privacy.contactTextPart3">.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  TERMS OF SERVICE                              -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="terms" class="doc-section">
+      <div class="section-header">
+        <span class="section-badge" data-i18n="legal.terms.title">Terms of Service</span>
+        <span class="section-title" data-i18n="legal.terms.sectionTitle">Rules governing your use of RENVA</span>
+      </div>
+
+      <p data-i18n="legal.terms.introParagraph">These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you") and RENVA ("we", "us", "our"). By creating an account or using the platform, you agree to be bound by these Terms. Please read them carefully.</p>
+
+      <!-- 1. Acceptance -->
+      <div id="acceptance">
+        <h3 data-i18n="legal.terms.acceptTitle">1. Acceptance of Terms</h3>
+        <p data-i18n="legal.terms.acceptConfirm">By accessing or using RENVA, you confirm that you:</p>
+        <ul>
+          <li data-i18n="legal.terms.acceptList.authorized">Are authorized by your business to use RENVA on its behalf</li>
+          <li data-i18n="legal.terms.acceptList.legalCapacity">Have the legal capacity to enter into a binding contract on behalf of that business</li>
+          <li data-i18n="legal.terms.acceptList.legitimateBusiness">Are using the platform for a legitimate car rental business operating in Morocco</li>
+          <li data-i18n="legal.terms.acceptList.readAgreed">Have read, understood, and agree to be bound by these Terms and our Privacy Policy</li>
+        </ul>
+        <p data-i18n="legal.terms.acceptCompanyRep">If you are using RENVA on behalf of a company or legal entity, you represent that you have the authority to bind that entity to these Terms.</p>
+      </div>
+
+      <!-- 2. Description -->
+      <h3 data-i18n="legal.terms.descTitle">2. Description of Service</h3>
+      <p data-i18n="legal.terms.descPlatform">RENVA is a web-based invoice management platform designed for car rental businesses. The platform allows you to:</p>
+      <ul>
+        <li data-i18n="legal.terms.descList.createCustomize">Create, customize, and export professional rental invoices as PDFs</li>
+        <li data-i18n="legal.terms.descList.manageClientsDb">Manage a database of your clients and their ID information</li>
+        <li data-i18n="legal.terms.descList.fleetRegistry">Maintain a fleet registry with vehicle specifications and pricing</li>
+        <li data-i18n="legal.terms.descList.revenueReports">Generate daily, monthly, and annual revenue reports</li>
+        <li data-i18n="legal.terms.descList.personalizeProfile">Personalize your company profile, logo, and invoice branding</li>
+      </ul>
+      <p data-i18n="legal.terms.descModifyRight">We reserve the right to modify, suspend, or discontinue any feature of the service at any time, with reasonable prior notice to subscribers.</p>
+
+      <!-- 3. Subscription -->
+      <div id="subscription">
+        <h3 data-i18n="legal.terms.subscriptionTitle">3. Subscription &amp; Billing</h3>
+        <p data-i18n="legal.terms.subscriptionIntro">RENVA is a paid subscription service. Access to the platform requires an active, paid subscription.</p>
+        <ul>
+          <li><strong data-i18n="legal.terms.subscriptionList.subscribeLabel">How to subscribe:</strong> <span data-i18n="legal.terms.subscriptionList.subscribeText">To activate your subscription, contact us at </span><a data-i18n="legal.terms.subscriptionList.subscribeEmail" href="mailto:contact@renva.space">contact@renva.space</a><span data-i18n="legal.terms.subscriptionList.subscribeTextPart2">. We will provide you with our bank details so you can complete the payment via bank transfer</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.activationLabel">Activation:</strong> <span data-i18n="legal.terms.subscriptionList.activationText">Your account will be activated manually once we confirm receipt of your payment. We will notify you by email when access is granted</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.plansLabel">Subscription plans:</strong> <span data-i18n="legal.terms.subscriptionList.plansText">Available plan tiers, pricing, and included features are communicated directly to you when you contact us, and may be updated from time to time</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.billingLabel">Billing cycle:</strong> <span data-i18n="legal.terms.subscriptionList.billingText">Subscriptions are billed in advance on a monthly or annual basis, depending on the plan you choose</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.renewalLabel">Renewal:</strong> <span data-i18n="legal.terms.subscriptionList.renewalText">We will contact you by email before your subscription expires to arrange renewal payment. Access continues uninterrupted once renewal payment is confirmed</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.cancelLabel">Cancellation:</strong> <span data-i18n="legal.terms.subscriptionList.cancelText">To cancel, contact us at </span><a data-i18n="legal.terms.subscriptionList.cancelEmail" href="mailto:contact@renva.space">contact@renva.space</a><span data-i18n="legal.terms.subscriptionList.cancelTextPart2"> before your next renewal period. You will retain access until the end of the period you have already paid for</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.refundLabel">Refunds:</strong> <span data-i18n="legal.terms.subscriptionList.refundText">You can stop your subscription at any time. You are eligible for a full or partial refund of the subscription amount.</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.priceLabel">Price changes:</strong> <span data-i18n="legal.terms.subscriptionList.priceText">We will give you at least 30 days' notice before changing subscription prices</span></li>
+          <li><strong data-i18n="legal.terms.subscriptionList.nonPaymentLabel">Non-payment:</strong> <span data-i18n="legal.terms.subscriptionList.nonPaymentText">If a renewal payment is not received within 7 days of the due date, access to the platform may be suspended. Your data will be retained for 90 days to allow you to settle the balance and regain access</span></li>
+        </ul>
+
+        <div class="warn-box">
+          <p><strong data-i18n="legal.terms.bankWarnLabel">Bank transfer payments:</strong> <span data-i18n="legal.terms.bankWarnTextPart1">RENVA processes payments manually via bank transfer. Our bank details are shared with you privately upon request. Never send payment to any account not confirmed directly by our team at </span><strong data-i18n="legal.terms.bankWarnEmail">contact@renva.space</strong><span data-i18n="legal.terms.bankWarnTextPart2">.</span></p>
+        </div>
+      </div>
+
+      <!-- 4. Acceptable use -->
+      <div id="acceptable-use">
+        <h3 data-i18n="legal.terms.acceptableTitle">4. Acceptable Use</h3>
+        <p data-i18n="legal.terms.acceptableIntro">You agree to use RENVA only for its intended purpose — managing your legitimate car rental business invoices and records. You must not:</p>
+        <ul>
+          <li data-i18n="legal.terms.acceptableList.fraudulent">Use the platform to create fraudulent, falsified, or misleading invoices or documents</li>
+          <li data-i18n="legal.terms.acceptableList.consent">Enter data belonging to people without their consent</li>
+          <li data-i18n="legal.terms.acceptableList.unauthorizedAccess">Attempt to gain unauthorized access to other users' accounts or data</li>
+          <li data-i18n="legal.terms.acceptableList.reverseEngineer">Reverse-engineer, decompile, scrape, or otherwise extract proprietary code or data from the platform</li>
+          <li data-i18n="legal.terms.acceptableList.illegalUse">Use the platform in any way that violates Moroccan law or any applicable regulation</li>
+          <li data-i18n="legal.terms.acceptableList.malware">Introduce malware, viruses, or any malicious code into the platform</li>
+          <li data-i18n="legal.terms.acceptableList.bots">Use automated bots or scripts to interact with the platform without our written consent</li>
+          <li data-i18n="legal.terms.acceptableList.resell">Resell or sublicense access to the platform without our explicit written permission</li>
+        </ul>
+        <p data-i18n="legal.terms.acceptableViolation">Violation of this section may result in immediate termination of your account. Refunds may still be provided at our discretion.</p>
+      </div>
+
+      <!-- 5. Your data ownership -->
+      <div id="your-data-ownership">
+        <h3 data-i18n="legal.terms.dataTitle">5. Your Data — Ownership &amp; Responsibility</h3>
+        <p><strong data-i18n="legal.terms.dataOwnershipLabel">You own your data.</strong> <span data-i18n="legal.terms.dataOwnershipText">All invoice data, client records, vehicle data, and company information you enter into RENVA belongs to you. We do not claim any ownership over content you create or upload.</span></p>
+        <p data-i18n="legal.terms.dataResponsibility">You are solely responsible for:</p>
+        <ul>
+          <li data-i18n="legal.terms.dataList.accuracy">The accuracy and legality of all data you enter into the platform</li>
+          <li data-i18n="legal.terms.dataList.consents">Obtaining any necessary consents from your clients before entering their personal data (CIN, passport, phone number) into RENVA, as required by Moroccan Law 09-08</li>
+          <li data-i18n="legal.terms.dataList.backups">Maintaining your own backups of important invoices and records. We recommend regularly exporting PDFs of critical documents</li>
+          <li data-i18n="legal.terms.dataList.credentials">The security of your account credentials — do not share your password with others</li>
+        </ul>
+      </div>
+
+      <!-- 6. IP -->
+      <div id="ip">
+        <h3 data-i18n="legal.terms.intelTitle">6. Intellectual Property</h3>
+        <p data-i18n="legal.terms.intelPlatform">The RENVA platform — including its design, code, interface, branding, feature set, and documentation — is the exclusive intellectual property of RENVA and is protected under applicable Moroccan and international intellectual property laws.</p>
+        <p data-i18n="legal.terms.intelLicense">You are granted a limited, non-exclusive, non-transferable, revocable license to access and use the platform solely for the purpose of managing your car rental business, subject to these Terms.</p>
+        <p data-i18n="legal.terms.intelNoConsent">You may not, without our prior written consent:</p>
+        <ul>
+          <li data-i18n="legal.terms.intelList.copy">Copy, reproduce, or distribute any part of the platform</li>
+          <li data-i18n="legal.terms.intelList.modify">Modify, adapt, or create derivative works based on the platform</li>
+          <li data-i18n="legal.terms.intelList.branding">Use RENVA's name, logo, or branding in any manner</li>
+          <li data-i18n="legal.terms.intelList.reverseEngineer">Reverse-engineer or attempt to extract the source code of the platform</li>
+        </ul>
+      </div>
+
+      <!-- 7. Uptime -->
+      <div id="uptime">
+        <h3 data-i18n="legal.terms.uptimeTitle">7. Service Availability &amp; Maintenance</h3>
+        <p data-i18n="legal.terms.uptimeIntro">We aim to keep RENVA available 24/7, but we do not guarantee uninterrupted access. The platform may be temporarily unavailable due to:</p>
+        <ul>
+          <li data-i18n="legal.terms.uptimeList.maintenance">Scheduled maintenance (we will provide advance notice when possible)</li>
+          <li data-i18n="legal.terms.uptimeList.emergency">Emergency fixes or security patches</li>
+          <li data-i18n="legal.terms.uptimeList.infrastructure">Firebase or Google Cloud infrastructure incidents beyond our control</li>
+          <li data-i18n="legal.terms.uptimeList.forceMajeure">Force majeure events (natural disasters, internet outages, etc.)</li>
+        </ul>
+        <p data-i18n="legal.terms.uptimeNoLiability">We are not liable for any losses resulting from platform downtime, data unavailability, or service interruptions.</p>
+      </div>
+
+      <!-- 8. Termination -->
+      <div id="termination">
+        <h3 data-i18n="legal.terms.terminationTitle">8. Termination</h3>
+        <p><strong data-i18n="legal.terms.terminationByYouLabel">By you:</strong> <span data-i18n="legal.terms.terminationByYouText">You may terminate your account at any time from the Settings page or by contacting support. Upon termination, your data will be retained for 90 days and then permanently deleted.</span></p>
+        <p><strong data-i18n="legal.terms.terminationByUsLabel">By us:</strong> <span data-i18n="legal.terms.terminationByUsText">We reserve the right to suspend or terminate your account with immediate effect if:</span></p>
+        <ul>
+          <li data-i18n="legal.terms.terminationList.breach">You violate these Terms, particularly the Acceptable Use section</li>
+          <li data-i18n="legal.terms.terminationList.nonPayment">Your subscription payment remains unpaid after the grace period</li>
+          <li data-i18n="legal.terms.terminationList.legalReq">We are required to do so by Moroccan law or court order</li>
+          <li data-i18n="legal.terms.terminationList.fraud">We detect fraudulent or illegal activity on your account</li>
+        </ul>
+        <p data-i18n="legal.terms.terminationNoRefund">In cases of termination for violation, refunds may still be provided at our discretion.</p>
+      </div>
+
+      <!-- 9. Disclaimer -->
+      <div id="disclaimer">
+        <h3 data-i18n="legal.terms.disclaimerTitle">9. Disclaimer &amp; Limitation of Liability</h3>
+        <p><span data-i18n="legal.terms.disclaimerAsIsPart1">RENVA is provided </span><strong data-i18n="legal.terms.disclaimerAsIsBold1">"as is"</strong><span data-i18n="legal.terms.disclaimerAsIsPart2"> and </span><strong data-i18n="legal.terms.disclaimerAsIsBold2">"as available"</strong><span data-i18n="legal.terms.disclaimerAsIsPart3"> without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</span></p>
+        <p data-i18n="legal.terms.disclaimerLiabilityIntro">To the maximum extent permitted by Moroccan law, RENVA shall not be liable for:</p>
+        <ul>
+          <li data-i18n="legal.terms.disclaimerList.indirect">Any indirect, incidental, special, or consequential damages</li>
+          <li data-i18n="legal.terms.disclaimerList.businessLoss">Loss of business, revenue, or profits resulting from use of or inability to use the platform</li>
+          <li data-i18n="legal.terms.disclaimerList.dataLoss">Loss or corruption of data due to technical failures or user error</li>
+          <li data-i18n="legal.terms.disclaimerList.thirdParty">Actions or content of third-party services (Firebase, Google Cloud)</li>
+          <li data-i18n="legal.terms.disclaimerList.taxLegal">Any tax, legal, or accounting consequences arising from invoice data you generate</li>
+        </ul>
+        <div class="info-box">
+          <p><strong data-i18n="legal.terms.disclaimerInfoBoxLabel">Important:</strong> <span data-i18n="legal.terms.disclaimerInfoBoxPart1">RENVA is an invoice </span><em data-i18n="legal.terms.disclaimerInfoBoxEm">management</em><span data-i18n="legal.terms.disclaimerInfoBoxPart2"> tool. We do not provide legal, tax, or accounting advice. You are responsible for ensuring your invoices comply with Moroccan tax regulations and any applicable laws.</span></p>
+        </div>
+      </div>
+
+      <!-- 10. Governing Law -->
+      <div id="governing-law">
+        <h3 data-i18n="legal.terms.lawTitle">10. Governing Law &amp; Dispute Resolution</h3>
+        <p><span data-i18n="legal.terms.lawTextPart1">These Terms are governed by and construed in accordance with the laws of the </span><strong data-i18n="legal.terms.lawCountry">Kingdom of Morocco</strong><span data-i18n="legal.terms.lawTextPart2">. Any disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the competent courts of Morocco.</span></p>
+        <p><span data-i18n="legal.terms.lawContactPart1">We encourage you to contact us first at </span><strong data-i18n="legal.terms.lawContactEmail">contact@renva.space</strong><span data-i18n="legal.terms.lawContactPart2"> before initiating any legal proceedings — most issues can be resolved quickly and amicably.</span></p>
+      </div>
+
+      <!-- 11. Changes -->
+      <h3 data-i18n="legal.terms.changesTitle">11. Changes to These Terms</h3>
+      <p data-i18n="legal.terms.changesText">We reserve the right to update these Terms at any time. When we make material changes, we will notify you by email at least 15 days before the updated Terms take effect. The most current version is always available on this page. Continued use of RENVA after the effective date of any changes constitutes your acceptance of the new Terms.</p>
+
+      <!-- 12. Contact -->
+      <div id="terms-contact">
+        <h3 data-i18n="legal.terms.contactTitle">12. Contact — Terms &amp; Legal</h3>
+        <div class="contact-block">
+
+          <div>
+            <h4 data-i18n="legal.terms.contactH4">Legal &amp; terms inquiries</h4>
+            <p><span data-i18n="legal.terms.contactTextPart1">For questions about these Terms of Service, billing disputes, or account issues, contact us at </span><a data-i18n="legal.terms.contactEmail" href="mailto:contact@renva.space">contact@renva.space</a><span data-i18n="legal.terms.contactTextPart2">. We aim to respond within 5 business days.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="legal-footer">
+      <p><span data-i18n="legal.footer.copyrightLabel">© </span><span id="legalYear"></span><span data-i18n="legal.footer.rightsReserved"> RENVA. All Rights Reserved. Governed by Moroccan Law.</span></p>
+      <div class="footer-badges">
+        <span class="footer-badge" data-i18n="legal.footer.badgeLaw">Law 09-08</span>
+        <span class="footer-badge" data-i18n="legal.footer.badgeFirebase">Supabase Secured</span>
+        <span class="footer-badge" data-i18n="legal.footer.badgeVersion">v2.0 · June 2026</span>
+      </div>
+    </div>
+
+  </main>
+
+<script src="i18n.js"></script>
+<script>
+  document.getElementById('legalYear').textContent = new Date().getFullYear();
+
+  // ── Lang switcher (init applies direction + wires buttons) ──
+  RENVA_I18N.init();
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RENVA — Reports | Revenue & Performance Analytics</title>
+  <meta name="description" content="Monthly and yearly revenue reports for your car rental business. Export data to Excel with multi-currency support. Track paid, unpaid, and overdue invoices." />
+  <meta name="keywords" content="revenue reports car rental Morocco, Excel export rental invoices, rental business analytics, rapport financier location voitures" />
+  <link rel="icon" type="image/png" href="renvafavicon.png" sizes="32x32" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="dashboard.css?v=3" />
+  <link rel="stylesheet" href="reports.css?v=2" />
+</head>
+<body>
+<div class="app-layout">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="renvalogo.png" alt="RENVA" class="sidebar-logo-img" />
+      </div>
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-name">RENVA</div>
+        <div class="sidebar-brand-sub company-name">Vehicle Rental</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label" data-i18n="settings.nav.main">Main</div>
+      <a href="dashboard.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span data-i18n="nav.dashboard">Dashboard</span>
+      </a>
+      <a href="invoices.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span data-i18n="nav.invoices">Invoices</span>
+        <span class="nav-badge" id="navInvoiceCount">—</span>
+      </a>
+      <a href="clients.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span data-i18n="nav.clients">Clients</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.analytics">Analytics</div>
+      <a href="reports.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span data-i18n="nav.reports">Reports</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.system">System</div>
+      <a href="settings.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span data-i18n="nav.settings">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">
+          <img class="company-logo-img" src="" alt="" style="display:none;" />
+          <span class="user-avatar-text">RV</span>
+        </div>
+        <button class="logout-btn" data-action="logout" title="Sign out" aria-label="Sign out">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+        <div class="user-email">user@renva.space</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="topbar-hamburger" id="hamburger" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <h2 class="topbar-title" data-i18n="nav.reports">Reports</h2>
+      <span class="topbar-company-name company-name"></span>
+      <div class="topbar-actions">
+        <div class="year-selector">
+          <label for="yearSelect" data-i18n="reports.title">Year</label>
+          <select id="yearSelect"></select>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="ar">ع</button>
+          </div>
+          <!-- theme toggle removed -->
+        </div>
+        <a href="settings.html" class="btn btn-ghost btn-sm" style="gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span data-i18n="nav.settings" class="hide-xs">Settings</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="page-body">
+      <div class="page-header fade-in-up">
+        <h1 data-i18n="reports.title">Revenue Analytics</h1>
+        <p data-i18n="reports.subtitle">Track your car rental business performance</p>
+      </div>
+
+      <div class="report-stats-grid">
+        <div class="stat-card glass-card" id="rStatToday">
+          <div class="stat-value" id="rValToday">—</div>
+          <div class="stat-label" data-i18n="dash.revenueToday">Revenue Today</div>
+        </div>
+        <div class="stat-card glass-card" id="rStatMonth">
+          <div class="stat-value" id="rValMonth">—</div>
+          <div class="stat-label" data-i18n="dash.revenueMonth">This Month</div>
+        </div>
+        <div class="stat-card glass-card" id="rStatYear">
+          <div class="stat-value" id="rValYear">—</div>
+          <div class="stat-label" data-i18n="dash.revenueYear">This Year</div>
+        </div>
+        <div class="stat-card glass-card" id="rStatInvoices">
+          <div class="stat-value" id="rValInvoices">—</div>
+          <div class="stat-label" data-i18n="dash.totalInvoices">Total Invoices</div>
+        </div>
+      </div>
+
+      <div class="report-charts-grid">
+        <div class="chart-card glass-card">
+          <div class="chart-card-header">
+            <h3 data-i18n="reports.revenueTrend">Revenue Trend</h3>
+            <span id="selectedYearLabel"></span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="revenueBarChart"></canvas>
+            <div class="chart-empty" id="barEmpty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <p data-i18n="dash.noData">No data available yet.</p>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card glass-card">
+          <div class="chart-card-header">
+            <h3 data-i18n="inv.col.status">Status</h3>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="statusDoughnutChart"></canvas>
+            <div class="chart-empty" id="doughnutEmpty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <p data-i18n="dash.noData">No data available yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="monthly-table-card glass-card">
+        <div class="monthly-table-header">
+          <h3 data-i18n="reports.monthlyBreakdown">Monthly Breakdown</h3>
+          <div class="export-group">
+            <span id="selectedYearLabelTable"></span>
+            <button class="btn btn-secondary btn-sm" id="exportXlsxBtn" style="gap:5px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              XLSX
+            </button>
+          </div>
+        </div>
+        <div class="monthly-table-wrap">
+          <table class="monthly-table">
+            <thead>
+              <tr>
+                <th data-i18n="reports.monthlyBreakdown">Month</th>
+                <th data-i18n="dash.totalInvoices">Total</th>
+                <th data-i18n="dash.paid">Paid</th>
+                <th data-i18n="dash.pending">Pending</th>
+                <th data-i18n="dash.revenueMonth">Revenue</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody id="monthlyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="reportsToast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script src="supabase.js"></script>
+  <script src="i18n.js?v=4"></script>
+  <script src="auth.js?v=3"></script>
+  <script src="reports.js?v=3"></script>
+</body>
+</html>

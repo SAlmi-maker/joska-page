@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RENVA — Clients | Customer Management for Rental Agencies</title>
+  <meta name="description" content="Manage your car rental clients: store names, ID/passport, phone, email, and invoice history. Find client records instantly with search." />
+  <meta name="keywords" content="client management car rental Morocco, customer database rental agency, gestion clients location voitures" />
+  <link rel="icon" type="image/png" href="renvafavicon.png" sizes="32x32" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="dashboard.css?v=3" />
+  <link rel="stylesheet" href="invoices.css?v=2" />
+</head>
+<body>
+<div class="app-layout">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="renvalogo.png" alt="RENVA" class="sidebar-logo-img" />
+      </div>
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-name">RENVA</div>
+        <div class="sidebar-brand-sub company-name">Vehicle Rental</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label" data-i18n="settings.nav.main">Main</div>
+      <a href="dashboard.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span data-i18n="nav.dashboard">Dashboard</span>
+      </a>
+      <a href="invoices.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span data-i18n="nav.invoices">Invoices</span>
+        <span class="nav-badge" id="navInvoiceCount">—</span>
+      </a>
+      <a href="clients.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span data-i18n="nav.clients">Clients</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.analytics">Analytics</div>
+      <a href="reports.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span data-i18n="nav.reports">Reports</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.system">System</div>
+      <a href="settings.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span data-i18n="nav.settings">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">
+          <img class="company-logo-img" src="" alt="" style="display:none;" />
+          <span class="user-avatar-text">RV</span>
+        </div>
+        <button class="logout-btn" data-action="logout" title="Sign out">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+        <div class="user-email">user@renva.space</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main-content">
+    <header class="topbar">
+      <button class="topbar-hamburger" id="hamburger" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <h2 class="topbar-title" data-i18n="nav.clients">Clients</h2>
+      <span class="topbar-company-name company-name"></span>
+      <div class="topbar-actions">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="ar">ع</button>
+          </div>
+          <!-- theme toggle removed -->
+        </div>
+        <button class="btn btn-primary btn-sm" id="btnNewClient" style="gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span data-i18n="clients.newClient">New Client</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-body">
+      <div class="page-header">
+        <h1 data-i18n="nav.clients">Clients</h1>
+        <p data-i18n="clients.subtitle">Manage your customers and their information</p>
+      </div>
+
+      <!-- Search -->
+      <div class="inv-filter-bar glass-card visible" style="margin-bottom:22px;">
+        <div class="inv-filter-left">
+          <div class="inv-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="clientSearch" class="inv-search-input" data-i18n-placeholder="common.search" placeholder="Search..." />
+          </div>
+        </div>
+        <div class="inv-count-badge" id="clientCountBadge" style="display:flex;align-items:center;gap:6px;padding:0 12px;">
+          <span id="clientCount">0</span>
+        </div>
+      </div>
+
+      <!-- Client Table -->
+      <div class="section-card glass-card visible">
+        <div class="section-header">
+          <h3><span data-i18n="nav.clients">Clients</span></h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="clients.name">Name</th>
+                <th data-i18n="clients.cin">ID/Passport</th>
+                <th data-i18n="clients.phone">Phone</th>
+                <th data-i18n="clients.email">Email</th>
+                <th data-i18n="clients.invoices">Invoices</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="clientTableBody"></tbody>
+          </table>
+          <div class="inv-loading" id="clientLoading">
+            <div class="inv-skeleton-row" style="animation-delay:0ms"></div>
+            <div class="inv-skeleton-row" style="animation-delay:80ms"></div>
+            <div class="inv-skeleton-row" style="animation-delay:160ms"></div>
+          </div>
+          <div class="empty-state" id="clientEmpty" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <h4 data-i18n="clients.noClients">No clients yet</h4>
+            <p data-i18n="clients.noClientsDesc">Add your first client using the button above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══ CLIENT MODAL ═══ -->
+<div class="modal-backdrop" id="clientModal" role="dialog" aria-modal="true">
+  <div class="modal-panel modal-panel-sm">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" id="clientModalTitle" data-i18n="clients.newClient">New Client</h3>
+      </div>
+      <button class="modal-close" id="clientModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="clientForm" novalidate autocomplete="off">
+        <input type="hidden" id="client_id" />
+
+        <div class="form-group">
+          <label class="form-label" for="client_name" data-i18n="clients.name">Full Name <span class="req">*</span></label>
+          <input type="text" id="client_name" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client_cin" data-i18n="clients.cin">ID/Passport <span class="req">*</span></label>
+          <input type="text" id="client_cin" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client_phone" data-i18n="clients.phone">Phone</label>
+          <input type="tel" id="client_phone" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client_email" data-i18n="clients.email">Email</label>
+          <input type="email" id="client_email" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client_address" data-i18n="clients.address">Address</label>
+          <textarea id="client_address" class="form-textarea" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="client_notes" data-i18n="clients.notes">Notes</label>
+          <input type="text" id="client_notes" class="form-input" />
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="clientModalCancel" data-i18n="common.cancel">Cancel</button>
+      <button class="btn btn-primary" id="clientSaveBtn" data-i18n="common.save">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DELETE MODAL ═══ -->
+<div class="modal-backdrop modal-backdrop-sm" id="deleteModal" role="dialog" aria-modal="true">
+  <div class="modal-panel modal-panel-sm">
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="clients.deleteTitle">Delete Client</h3>
+      <button class="modal-close" id="deleteModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-secondary);font-size:0.95rem;" data-i18n="clients.deleteConfirm">Are you sure you want to delete this client? This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="deleteCancelBtn" data-i18n="common.cancel">Cancel</button>
+      <button class="btn" id="deleteConfirmBtn" style="background:var(--red);color:#fff;" data-i18n="common.delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="clientToast"></div>
+
+<!-- Firebase SDKs -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+  <script src="i18n.js?v=4"></script>
+  <script src="auth.js?v=3"></script>
+  <script src="clients.js?v=3"></script>
+</body>
+</html>

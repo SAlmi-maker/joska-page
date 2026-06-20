@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RENVA — Invoices | Create & Manage Car Rental Invoices</title>
+  <meta name="description" content="Create, manage, and export professional PDF invoices for your car rental agency. Multi-template invoices with company branding, client management, and bulk PDF export." />
+  <meta name="keywords" content="car rental invoice PDF Morocco, facture location voiture Maroc, invoice template rental cars, Arabic invoice RTL" />
+  <link rel="icon" type="image/png" href="renvafavicon.png" sizes="32x32" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="dashboard.css?v=3" />
+  <link rel="stylesheet" href="invoices.css?v=2" />
+</head>
+<body>
+<div class="app-layout">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="renvalogo.png" alt="RENVA" class="sidebar-logo-img" />
+      </div>
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-name">RENVA</div>
+        <div class="sidebar-brand-sub company-name">Vehicle Rental</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label" data-i18n="settings.nav.main">Main</div>
+      <a href="dashboard.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span data-i18n="nav.dashboard">Dashboard</span>
+      </a>
+      <a href="invoices.html" class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span data-i18n="nav.invoices">Invoices</span>
+        <span class="nav-badge" id="navInvoiceCount">—</span>
+      </a>
+      <a href="clients.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span data-i18n="nav.clients">Clients</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.analytics">Analytics</div>
+      <a href="reports.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span data-i18n="nav.reports">Reports</span>
+      </a>
+      <div class="nav-section-label" data-i18n="settings.nav.system">System</div>
+      <a href="settings.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span data-i18n="nav.settings">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">
+          <img class="company-logo-img" src="" alt="" style="display:none;" />
+          <span class="user-avatar-text">RV</span>
+        </div>
+        <button class="logout-btn" data-action="logout" title="Sign out" aria-label="Sign out">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+        <div class="user-email">user@renva.space</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="topbar-hamburger" id="hamburger" aria-label="Toggle sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <h2 class="topbar-title" data-i18n="nav.invoices">Invoices</h2>
+      <span class="topbar-company-name company-name"></span>
+      <div class="topbar-actions">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="ar">ع</button>
+          </div>
+          <!-- theme toggle removed -->
+        </div>
+        <button class="btn btn-primary btn-sm" id="btnNewInvoice" style="gap:6px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span data-i18n="dash.newInvoice">New Invoice</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="page-body">
+      <div class="page-header">
+        <h1 data-i18n="nav.invoices">Invoices</h1>
+        <p data-i18n="inv.pageSubtitle">Create, manage, and export car rental invoices.</p>
+      </div>
+
+      <div class="inv-filter-bar glass-card visible" style="margin-bottom:22px;">
+        <div class="inv-filter-left">
+          <div class="inv-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="invSearch" class="inv-search-input" data-i18n-placeholder="common.search" placeholder="Search&hellip;" />
+          </div>
+        </div>
+        <div class="inv-filter-right">
+          <div class="inv-status-tabs" id="invStatusTabs">
+            <button class="inv-tab active" data-status="all" data-i18n="inv.filterAll">All</button>
+            <button class="inv-tab" data-status="paid" data-i18n="dash.paid">Paid</button>
+            <button class="inv-tab" data-status="pending" data-i18n="dash.pending">Pending</button>
+            <button class="inv-tab" data-status="overdue" data-i18n="dash.overdue">Overdue</button>
+            <button class="inv-tab" data-status="draft" data-i18n="dash.draft">Draft</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card glass-card visible">
+        <div class="section-header">
+          <h3>
+            <span data-i18n="dash.recentInvoices">Invoices</span>
+            <span class="inv-count-badge" id="invCountBadge">0</span>
+          </h3>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button class="btn btn-ghost btn-sm" id="btnExportAll" title="Export invoices" style="gap:5px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span data-i18n="inv.export">Export</span>
+            </button>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table id="invTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th data-i18n="inv.col.client">Client</th>
+                <th data-i18n="inv.col.vehicle">Vehicle</th>
+                <th data-i18n="inv.col.period">Period</th>
+                <th data-i18n="inv.col.total">Total</th>
+                <th data-i18n="inv.col.status">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="invTableBody"></tbody>
+          </table>
+          <div class="inv-loading" id="invLoading">
+            <div class="inv-skeleton-row" style="animation-delay:0ms"></div>
+            <div class="inv-skeleton-row" style="animation-delay:80ms"></div>
+            <div class="inv-skeleton-row" style="animation-delay:160ms"></div>
+          </div>
+          <div class="empty-state" id="invEmpty" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <h4 data-i18n="inv.noInvoices">No invoices yet</h4>
+            <p data-i18n="inv.noInvoicesDesc">Create your first invoice using the button above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     NEW / EDIT INVOICE MODAL + LIVE PREVIEW
+══════════════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="invoiceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-panel">
+
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" id="modalTitle" data-i18n="inv.newInvoice">New Invoice</h3>
+        <p class="modal-subtitle" data-i18n="inv.newInvoiceDesc">Car rental agreement &amp; invoice</p>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="invoiceForm" novalidate autocomplete="off">
+        <input type="hidden" id="inv_id" />
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span data-i18n="inv.section.customer">Customer</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_clientName" data-i18n="inv.field.clientName">Customer Name <span class="req">*</span></label>
+              <input type="text" id="inv_clientName" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inv_cin" data-i18n="inv.field.cin">ID/Passport <span class="req">*</span></label>
+              <input type="text" id="inv_cin" class="form-input" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_phone" data-i18n="inv.field.phone">Phone</label>
+              <input type="tel" id="inv_phone" class="form-input" />
+            </div>
+            <div class="form-group"></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+            <span data-i18n="inv.section.vehicle">Vehicle</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_vehicleBrand" data-i18n="inv.field.vehicleBrand">Brand <span class="req">*</span></label>
+              <input type="text" id="inv_vehicleBrand" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inv_vehicleModel" data-i18n="inv.field.vehicleModel">Model <span class="req">*</span></label>
+              <input type="text" id="inv_vehicleModel" class="form-input" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_plate" data-i18n="inv.field.plate">Registration Plate <span class="req">*</span></label>
+              <input type="text" id="inv_plate" class="form-input" style="text-transform:uppercase;" required />
+            </div>
+            <div class="form-group"></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+            <span data-i18n="inv.section.period">Rental Period</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_startDate" data-i18n="inv.field.startDate">Start Date <span class="req">*</span></label>
+              <input type="date" id="inv_startDate" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inv_endDate" data-i18n="inv.field.endDate">End Date <span class="req">*</span></label>
+              <input type="date" id="inv_endDate" class="form-input" required />
+            </div>
+          </div>
+          <div class="inv-days-display" id="invDaysDisplay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="invDaysText">&mdash;</span>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span data-i18n="inv.section.pricing">Pricing</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_dailyPrice" data-i18n="inv.field.dailyPrice">Daily Price <span class="req">*</span></label>
+              <div class="input-with-addon">
+                <input type="number" id="inv_dailyPrice" class="form-input" min="0" step="0.01" required />
+                <span class="input-addon" data-i18n="common.currency">MAD</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="inv.field.rentalSubtotal">Rental Subtotal</label>
+              <div class="calc-display" id="calcRental">0.00 MAD</div>
+            </div>
+          </div>
+          <div class="extras-grid">
+            <div class="extra-row">
+              <label class="extra-label" for="inv_insurance" data-i18n="inv.field.insurance">Insurance</label>
+              <div class="input-with-addon extra-input">
+                <input type="number" id="inv_insurance" class="form-input" min="0" step="0.01" value="0" />
+                <span class="input-addon" data-i18n="common.currency">MAD</span>
+              </div>
+            </div>
+            <div class="extra-row">
+              <label class="extra-label" for="inv_fuel" data-i18n="inv.field.fuel">Fuel</label>
+              <div class="input-with-addon extra-input">
+                <input type="number" id="inv_fuel" class="form-input" min="0" step="0.01" value="0" />
+                <span class="input-addon" data-i18n="common.currency">MAD</span>
+              </div>
+            </div>
+            <div class="extra-row">
+              <label class="extra-label" for="inv_extraDriver" data-i18n="inv.field.extraDriver">Extra Driver</label>
+              <div class="input-with-addon extra-input">
+                <input type="number" id="inv_extraDriver" class="form-input" min="0" step="0.01" value="0" />
+                <span class="input-addon" data-i18n="common.currency">MAD</span>
+              </div>
+            </div>
+            <div class="extra-row">
+              <label class="extra-label" for="inv_other" data-i18n="inv.field.other">Other Charges</label>
+              <div class="input-with-addon extra-input">
+                <input type="number" id="inv_other" class="form-input" min="0" step="0.01" value="0" />
+                <span class="input-addon" data-i18n="common.currency">MAD</span>
+              </div>
+            </div>
+          </div>
+          <div class="inv-total-row">
+            <div class="inv-total-label" data-i18n="inv.field.total">Total</div>
+            <div class="inv-total-value" id="invTotalDisplay">0.00 MAD</div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">
+            <span class="form-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+            <span data-i18n="inv.section.status">Status &amp; Notes</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inv_status" data-i18n="inv.field.status">Invoice Status</label>
+              <select id="inv_status" class="form-input form-select">
+                <option value="draft" data-i18n="dash.draft">Draft</option>
+                <option value="pending" data-i18n="dash.pending">Pending</option>
+                <option value="paid" data-i18n="dash.paid">Paid</option>
+                <option value="overdue" data-i18n="dash.overdue">Overdue</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inv_notes" data-i18n="inv.field.notes">Notes</label>
+              <input type="text" id="inv_notes" class="form-input" />
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <div class="modal-footer-left">
+        <button class="btn btn-ghost" id="modalCancel" data-i18n="common.cancel">Cancel</button>
+        <button class="btn btn-secondary" id="modalSaveDraft" style="gap:5px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span data-i18n="inv.saveDraft">Save Draft</span>
+        </button>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-secondary" id="modalPDF" style="gap:5px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="inv.downloadPDF">Download PDF</span>
+        </button>
+        <button class="btn btn-primary" id="modalSave" style="gap:5px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          <span data-i18n="common.save">Save</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ Live Preview Panel (InvoicePro-style) ═══ -->
+  <div class="inv-preview-wrap" id="invPreviewWrap">
+  <div class="inv-preview-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span data-i18n="inv.preview">Preview</span>
+    <button class="inv-preview-close" id="previewCloseBtn">&times;</button>
+  </div>
+  <div class="inv-preview-body">
+    <!-- Invoice document (preview + print target) -->
+    <div class="ip-invoice" id="ip_invoicePreview">
+      <div class="ip-invoice-header">
+        <div class="ip-invoice-company">
+          <h2 id="preview_companyName">RENVA</h2>
+          <p id="preview_companyAddr"></p>
+          <p id="preview_companyEmail"></p>
+          <p id="preview_companyPhone"></p>
+          <p id="preview_companyWebsite"></p>
+        </div>
+        <img class="ip-invoice-logo" id="preview_logo" src="" alt="Logo" style="display:none;" />
+      </div>
+      <div class="ip-invoice-title-row">
+        <div class="ip-invoice-title-bar">
+          <h1 id="preview_title">INVOICE</h1>
+          <div class="ip-invoice-meta">
+            <strong id="preview_invNumber">#—</strong><br />
+            <span id="preview_issueLabel">Issue</span>: <span id="preview_issueDate">—</span><br />
+            <span id="preview_dueLabel">Due</span>: <span id="preview_dueDate">—</span>
+          </div>
+        </div>
+        <div class="ip-address-block ip-customer-block">
+          <h4 id="preview_billToLabel">Customer Information</h4>
+          <h3 id="preview_clientName">—</h3>
+          <p id="preview_clientCIN"></p>
+          <p id="preview_clientPhone"></p>
+          <p id="preview_clientVehicle"></p>
+          <p id="preview_clientPlate"></p>
+        </div>
+      </div>
+
+      <!-- Description table -->
+      <table class="ip-invoice-table">
+        <thead>
+          <tr>
+            <th style="width:45%;" id="preview_descLabel" data-i18n="pdf.description">DESCRIPTION</th>
+            <th style="width:12%;" id="preview_qtyLabel" data-i18n="pdf.qty">DAYS</th>
+            <th style="width:18%;" id="preview_unitLabel" data-i18n="pdf.ratePerDay">RATE PER DAY</th>
+            <th style="width:25%;" id="preview_amtLabel" data-i18n="pdf.amount">AMOUNT</th>
+          </tr>
+        </thead>
+        <tbody id="preview_itemsBody"></tbody>
+      </table>
+
+      <!-- Summary table (grand total + status) -->
+      <table class="ip-summary-table">
+        <tbody>
+          <tr class="ip-summary-grand">
+            <td style="width:45%;" id="preview_grandLabel">GRAND TOTAL</td>
+            <td style="width:12%;"></td>
+            <td style="width:18%;"></td>
+            <td style="width:25%;" id="preview_grandTotal">0.00 MAD</td>
+          </tr>
+          <tr class="ip-summary-status">
+            <td id="preview_statusLabel">STATUS</td>
+            <td></td>
+            <td></td>
+            <td><span class="ip-status-badge ip-status-draft" id="preview_status">Draft</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ip-invoice-footer">
+        <div id="preview_notesWrap" style="display:none;">
+          <h5 id="preview_notesLabel">NOTES</h5>
+          <p id="preview_notes"></p>
+        </div>
+      </div>
+    </div>
+    <div class="inv-preview-empty" id="invPreviewEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="6" y1="16" x2="12" y2="16"/></svg>
+      <p data-i18n="inv.previewEmpty">Fill in the form to preview</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     DELETE CONFIRM MODAL
+══════════════════════════════════════════════════════ -->
+<div class="modal-backdrop modal-backdrop-sm" id="deleteModal" role="dialog" aria-modal="true">
+  <div class="modal-panel modal-panel-sm">
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="inv.deleteTitle">Delete Invoice</h3>
+      <button class="modal-close" id="deleteModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--text-secondary);font-size:0.95rem;" data-i18n="inv.deleteConfirm">Are you sure you want to permanently delete this invoice? This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="deleteCancelBtn" data-i18n="common.cancel">Cancel</button>
+      <button class="btn" id="deleteConfirmBtn" style="background:var(--red);color:#fff;" data-i18n="common.delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="invToast"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     EXPORT SELECTION MODAL
+══════════════════════════════════════════════════════ -->
+<div class="modal-backdrop modal-backdrop-sm" id="exportModal" role="dialog" aria-modal="true">
+  <div class="modal-panel modal-panel-sm" style="max-width:420px;">
+    <div class="modal-header">
+      <h3 class="modal-title" data-i18n="inv.export">Export Invoices</h3>
+      <button class="modal-close" id="exportModalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:14px;" data-i18n="inv.exportDesc">Select months and year to export</p>
+      <div style="margin-bottom:14px;">
+        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:6px;" data-i18n="inv.exportYear">Year</label>
+        <select id="exportYear" class="form-input form-select" style="max-width:120px;padding:6px 8px;font-size:0.85rem;"></select>
+      </div>
+      <div>
+        <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:6px;" data-i18n="inv.exportMonths">Months</label>
+        <div id="exportMonthGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="exportCancelBtn" data-i18n="common.cancel">Cancel</button>
+      <button class="btn btn-primary" id="exportConfirmBtn" style="gap:5px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-i18n="inv.exportPDF">Export PDF</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="supabase.js"></script>
+  <script src="i18n.js?v=5"></script>
+  <script src="auth.js?v=4"></script>
+  <script src="invoices.js?v=5"></script>
+</body>
+</html>
