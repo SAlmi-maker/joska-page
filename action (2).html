@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOSKA — Redirecting...</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      font-family: Inter, sans-serif;
+    }
+    .splash { text-align: center; animation: fadeIn 0.4s ease both; }
+    .splash-logo {
+      width: 64px; height: 64px;
+      background: #2563EB;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .splash-logo svg { width: 34px; height: 34px; color: #fff; }
+    .splash-name { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .splash-sub  { font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: #2563EB;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 24px auto 0;
+    }
+    @keyframes spin   { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <div class="splash">
+    <div class="splash-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+      </svg>
+    </div>
+    <div class="splash-name">JOSKA</div>
+    <div class="splash-sub">Redirecting securely...</div>
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const mode    = params.get('mode');
+      const oobCode = params.get('oobCode');
+      const lang    = params.get('lang') || 'en';
+
+      if (mode === 'resetPassword' && oobCode) {
+        // Redirect to branded reset page, preserving all Firebase params
+        window.location.replace(
+          'reset-password.html?mode=' + mode +
+          '&oobCode=' + encodeURIComponent(oobCode) +
+          '&lang=' + lang
+        );
+      } else {
+        // Unknown mode — go to login
+        window.location.replace('login.html');
+      }
+    })();
+  </script>
+</body>
+</html>
